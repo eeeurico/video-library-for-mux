@@ -1,0 +1,99 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "vlfm/video",
+  "version": "1.0.0",
+  "title": "Mux Video",
+  "category": "media",
+  "icon": "video-alt3",
+  "description": "Upload a video to Mux, or choose one from your Mux video library, and play it with Mux Player.",
+  "keywords": [
+    "video",
+    "mux",
+    "stream",
+    "player",
+    "upload"
+  ],
+  "textdomain": "video-library-for-mux",
+  "attributes": {
+    "videoId": {
+      "type": "number"
+    },
+    "background": {
+      "type": "boolean",
+      "default": false
+    },
+    "autoplay": {
+      "type": "boolean",
+      "default": false
+    },
+    "muted": {
+      "type": "boolean",
+      "default": false
+    },
+    "loop": {
+      "type": "boolean",
+      "default": false
+    },
+    "controls": {
+      "type": "boolean",
+      "default": true
+    },
+    "showTitle": {
+      "type": "boolean",
+      "default": false
+    },
+    "hideCaptions": {
+      "type": "boolean",
+      "default": false
+    },
+    "playbackRates": {
+      "type": "string",
+      "default": ""
+    },
+    "preload": {
+      "type": "string",
+      "enum": [
+        "",
+        "none",
+        "metadata",
+        "auto"
+      ],
+      "default": ""
+    },
+    "maxResolution": {
+      "type": "string",
+      "enum": [
+        "",
+        "720p",
+        "1080p",
+        "1440p",
+        "2160p"
+      ],
+      "default": ""
+    },
+    "posterId": {
+      "type": "number"
+    },
+    "startTime": {
+      "type": "number"
+    },
+    "accentColor": {
+      "type": "string"
+    }
+  },
+  "supports": {
+    "align": [
+      "wide",
+      "full"
+    ],
+    "html": false,
+    "spacing": {
+      "margin": true
+    }
+  },
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "viewScript": "vlfm-player"
+}

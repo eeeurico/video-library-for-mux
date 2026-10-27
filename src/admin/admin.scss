@@ -1,0 +1,16 @@
+/**
+ * The Mux Videos → Library screen.
+ */
+.vlfm-library {
+	position: relative;
+	margin-top: 16px;
+
+	> .components-notice {
+		margin: 0 0 16px;
+	}
+}
+
+#vlfm-library-actions .page-title-action[disabled] {
+	opacity: 0.6;
+	pointer-events: none;
+}

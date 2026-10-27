@@ -1,0 +1,93 @@
+/**
+ * Editor-only styles for the block, inside the editor canvas.
+ */
+.wp-block-vlfm-video {
+
+	.vlfm-block-player {
+		position: relative;
+	}
+
+	// Lets a click select the block instead of starting playback.
+	.vlfm-block-player__overlay {
+		position: absolute;
+		inset: 0;
+		z-index: 1;
+	}
+
+	.vlfm-block-state {
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		aspect-ratio: 16 / 9;
+		padding: 24px;
+		background-color: #1e1e1e;
+		background-position: center;
+		background-size: cover;
+		color: #fff;
+		text-align: center;
+
+		&::before {
+			content: "";
+			position: absolute;
+			inset: 0;
+			background: rgba(0, 0, 0, 0.6);
+		}
+
+		p {
+			margin: 0;
+		}
+
+		.components-button.is-secondary {
+			background: #fff;
+		}
+	}
+
+	.vlfm-block-state__content {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 12px;
+		max-width: 420px;
+		width: 100%;
+	}
+
+	.vlfm-block-state__title {
+		font-weight: 600;
+	}
+
+	.vlfm-progress {
+		display: block;
+		width: 100%;
+		height: 6px;
+		overflow: hidden;
+		border-radius: 3px;
+		background: rgba(255, 255, 255, 0.25);
+	}
+
+	.vlfm-progress__bar {
+		display: block;
+		height: 100%;
+		background: var(--wp-admin-theme-color, #3858e9);
+		transition: width 0.2s ease-out;
+	}
+
+	.vlfm-placeholder__actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 8px;
+	}
+
+	.vlfm-placeholder__progress {
+		display: flex;
+		align-items: center;
+		gap: 8px;
+	}
+
+	.vlfm-placeholder__hint {
+		flex-basis: 100%;
+		margin: 12px 0 0;
+		font-size: 13px;
+	}
+}

@@ -1,0 +1,18 @@
+/**
+ * Front end and editor: the player fills its block.
+ */
+.wp-block-vlfm-video,
+.vlfm-video {
+	margin-left: 0;
+	margin-right: 0;
+
+	mux-player {
+		display: block;
+		width: 100%;
+	}
+
+	// Hold the space before the player script runs.
+	mux-player:not(:defined) {
+		background: #000;
+	}
+}

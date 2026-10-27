@@ -1,0 +1,643 @@
+/**
+ * The video grid, uploader and dialogs. Loaded on the library screen and in the
+ * block editor, where dialogs render outside the editor canvas.
+ */
+$border: #c3c4c7;
+$border-light: #dcdcde;
+$muted: #646970;
+$text: #1d2327;
+$theme: var(--wp-admin-theme-color, #2271b1);
+
+/* Toolbar ----------------------------------------------------------------- */
+
+.vlfm-toolbar {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px 16px;
+	margin: 0 0 16px;
+	padding: 12px 16px;
+	border: 1px solid $border;
+	background: #fff;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+}
+
+.vlfm-toolbar__filters {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+}
+
+.vlfm-toolbar__search {
+	flex: 0 1 320px;
+	min-width: 220px;
+}
+
+/* Grid -------------------------------------------------------------------- */
+
+.vlfm-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+	gap: 16px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.vlfm-card {
+	margin: 0;
+}
+
+// A flex column, because browsers center a button's content vertically and
+// cards with one-line titles would otherwise drop their thumbnail.
+.vlfm-card__button {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	width: 100%;
+	height: 100%;
+	padding: 0;
+	overflow: hidden;
+	border: 0;
+	border-radius: 2px;
+	background: #fff;
+	box-shadow: 0 0 0 1px $border-light;
+	color: inherit;
+	font: inherit;
+	text-align: left;
+	cursor: pointer;
+	transition: box-shadow 0.1s ease-out;
+
+	&:hover {
+		box-shadow: 0 0 0 1px $border, 0 2px 6px rgba(0, 0, 0, 0.08);
+	}
+
+	&:focus-visible {
+		outline: 2px solid transparent;
+		box-shadow: 0 0 0 2px $theme;
+	}
+}
+
+.vlfm-card.is-selected .vlfm-card__button {
+	box-shadow: 0 0 0 3px $theme;
+}
+
+.vlfm-card.is-disabled .vlfm-card__button {
+	cursor: not-allowed;
+	opacity: 0.6;
+}
+
+.vlfm-card__media {
+	position: relative;
+	display: block;
+	flex-shrink: 0;
+	aspect-ratio: 16 / 9;
+	background: #1e1e1e;
+
+	img {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+}
+
+.vlfm-card__placeholder {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+	color: #8c8f94;
+}
+
+.vlfm-card__duration {
+	position: absolute;
+	right: 6px;
+	bottom: 6px;
+	padding: 1px 6px;
+	border-radius: 2px;
+	background: rgba(0, 0, 0, 0.75);
+	color: #fff;
+	font-size: 11px;
+	line-height: 18px;
+	font-variant-numeric: tabular-nums;
+}
+
+.vlfm-card__state {
+	position: absolute;
+	inset: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	padding: 12px;
+	background: rgba(0, 0, 0, 0.6);
+	color: #fff;
+	font-size: 12px;
+	text-align: center;
+
+	svg,
+	.dashicon {
+		fill: currentcolor;
+		color: currentcolor;
+	}
+
+	.components-spinner {
+		margin: 0;
+	}
+
+	.vlfm-progress {
+		width: 70%;
+		background: rgba(255, 255, 255, 0.25);
+	}
+
+	&.is-error {
+		color: #ffabaf;
+	}
+}
+
+.vlfm-card__check {
+	position: absolute;
+	top: 6px;
+	right: 6px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 24px;
+	height: 24px;
+	border-radius: 50%;
+	background: $theme;
+	color: #fff;
+	box-shadow: 0 0 0 2px #fff;
+}
+
+.vlfm-card__body {
+	display: block;
+	padding: 8px 10px 10px;
+}
+
+.vlfm-card__title {
+	display: -webkit-box;
+	overflow: hidden;
+	color: $text;
+	font-weight: 600;
+	line-height: 1.4;
+	overflow-wrap: anywhere;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+
+	mark {
+		background: #fcf9e8;
+		box-shadow: 0 0 0 1px #f0c33c;
+		color: inherit;
+	}
+}
+
+.vlfm-card__meta {
+	display: block;
+	margin-top: 2px;
+	color: $muted;
+	font-size: 12px;
+}
+
+/* Browser states ---------------------------------------------------------- */
+
+.vlfm-browser__loading {
+	display: flex;
+	justify-content: center;
+	padding: 48px 0;
+}
+
+.vlfm-browser__empty {
+	padding: 48px 16px;
+	color: $muted;
+	text-align: center;
+
+	p {
+		font-size: 14px;
+	}
+}
+
+.vlfm-browser__empty-title {
+	color: $text;
+	font-size: 16px !important;
+}
+
+.vlfm-browser__empty-actions {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 8px;
+	margin-top: 16px;
+}
+
+.vlfm-browser__footer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 8px;
+	padding: 24px 0 8px;
+}
+
+.vlfm-browser__count {
+	margin: 0;
+	color: $muted;
+}
+
+/* Progress ---------------------------------------------------------------- */
+
+.vlfm-progress {
+	display: block;
+	height: 6px;
+	overflow: hidden;
+	border-radius: 3px;
+	background: #f0f0f1;
+}
+
+.vlfm-progress__bar {
+	display: block;
+	height: 100%;
+	background: $theme;
+	transition: width 0.2s ease-out;
+}
+
+/* Uploader ---------------------------------------------------------------- */
+
+.vlfm-uploader {
+	position: relative;
+	margin: 0 0 16px;
+	padding: 32px 16px;
+	border: 4px dashed $border;
+	background: #fff;
+	text-align: center;
+
+	p {
+		margin: 8px 0;
+	}
+}
+
+.vlfm-uploader__title {
+	font-size: 20px;
+	line-height: 1.4;
+}
+
+.vlfm-uploader__note {
+	color: $muted;
+}
+
+.vlfm-uploader__close {
+	position: absolute !important;
+	top: 4px;
+	right: 4px;
+}
+
+.vlfm-uploads {
+	margin: 0 0 16px;
+	padding: 0;
+	border: 1px solid $border;
+	background: #fff;
+	list-style: none;
+}
+
+.vlfm-upload {
+	display: flex;
+	align-items: flex-start;
+	gap: 16px;
+	margin: 0;
+	padding: 12px 16px;
+
+	& + & {
+		border-top: 1px solid #f0f0f1;
+	}
+}
+
+.vlfm-upload__main {
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+	gap: 6px;
+	min-width: 0;
+	max-width: 640px;
+}
+
+.vlfm-upload__file,
+.vlfm-upload__status {
+	margin: 0;
+	color: $muted;
+	font-size: 12px;
+}
+
+.vlfm-upload__status.is-error {
+	color: #d63638;
+}
+
+.vlfm-upload__actions {
+	padding-top: 24px;
+}
+
+/* Video details dialog ---------------------------------------------------- */
+
+.vlfm-details-modal {
+	width: min(1120px, calc(100vw - 32px));
+	max-width: none;
+}
+
+.vlfm-details {
+	display: grid;
+	grid-template-columns: minmax(0, 3fr) minmax(280px, 2fr);
+	gap: 24px;
+
+	@media (max-width: 782px) {
+		grid-template-columns: 1fr;
+	}
+}
+
+.vlfm-details__preview {
+	position: sticky;
+	top: 0;
+	align-self: start;
+
+	@media (max-width: 782px) {
+		position: static;
+	}
+}
+
+.vlfm-details__player mux-player {
+	display: block;
+	width: 100%;
+}
+
+.vlfm-details__state {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 12px;
+	aspect-ratio: 16 / 9;
+	padding: 24px;
+	background: #1e1e1e;
+	color: #fff;
+	text-align: center;
+
+	p {
+		max-width: 420px;
+		margin: 0;
+	}
+
+	.vlfm-progress {
+		width: 60%;
+		background: rgba(255, 255, 255, 0.25);
+	}
+
+	.components-button.is-secondary {
+		background: #fff;
+	}
+}
+
+.vlfm-details__fields {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	min-width: 0;
+}
+
+.vlfm-field-label {
+	margin: 0 0 8px;
+	font-size: 11px;
+	font-weight: 500;
+	line-height: 1.4;
+	text-transform: uppercase;
+}
+
+.vlfm-thumbnail__body {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+
+	img,
+	.vlfm-thumbnail__empty {
+		flex: none;
+		width: 120px;
+		aspect-ratio: 16 / 9;
+		object-fit: cover;
+		background: #1e1e1e;
+	}
+}
+
+.vlfm-thumbnail__time {
+	margin: 0 0 8px;
+}
+
+.vlfm-thumbnail .description {
+	margin: 8px 0 0;
+	color: $muted;
+	font-size: 12px;
+}
+
+.vlfm-meta {
+	margin: 0;
+	border-top: 1px solid #f0f0f1;
+}
+
+.vlfm-meta__row {
+	display: grid;
+	grid-template-columns: 110px minmax(0, 1fr);
+	gap: 12px;
+	padding: 6px 0;
+	border-bottom: 1px solid #f0f0f1;
+	font-size: 13px;
+
+	dt {
+		color: $muted;
+	}
+
+	dd {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 6px;
+		margin: 0;
+		overflow-wrap: anywhere;
+	}
+
+	code {
+		padding: 1px 4px;
+		font-size: 12px;
+		word-break: break-all;
+	}
+}
+
+.vlfm-shortcode__row {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px;
+
+	code {
+		padding: 4px 6px;
+	}
+}
+
+.vlfm-details__footer {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 8px;
+	margin-top: 24px;
+	padding-top: 16px;
+	border-top: 1px solid #f0f0f1;
+}
+
+.vlfm-confirm-delete {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+
+	p {
+		margin: 0;
+	}
+}
+
+/* Import dialog ----------------------------------------------------------- */
+
+.vlfm-import-modal {
+	width: min(560px, calc(100vw - 32px));
+}
+
+.vlfm-import {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 16px;
+
+	> p {
+		margin: 0;
+	}
+
+	.components-base-control {
+		width: 100%;
+	}
+}
+
+/* Block editor library dialog --------------------------------------------- */
+
+.vlfm-library-modal {
+
+	// Set here rather than inherited, so the footer can span the dialog.
+	.components-modal__content {
+		display: flex;
+		flex-direction: column;
+		padding: 4px 24px 0;
+	}
+
+	// Newer versions of WordPress wrap the content in this.
+	.components-modal__children-container {
+		display: flex;
+		flex: 1;
+		flex-direction: column;
+		min-height: 0;
+	}
+}
+
+.vlfm-library-modal__tabs {
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+	min-height: 0;
+
+	.components-tab-panel__tabs {
+		margin-bottom: 16px;
+		border-bottom: 1px solid #ddd;
+	}
+
+	.components-tab-panel__tab-content {
+		display: flex;
+		flex: 1;
+		flex-direction: column;
+		min-height: 0;
+	}
+}
+
+// Room for the selected card's outline, which the scrolling area would clip.
+.vlfm-library-modal__panel {
+	flex: 1;
+	min-height: 0;
+	margin: 0 -4px;
+	padding: 0 4px 4px;
+	overflow: auto;
+}
+
+.vlfm-library-modal__footer {
+	position: sticky;
+	bottom: 0;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	gap: 16px;
+	margin: 0 -24px;
+	padding: 12px 24px;
+	border-top: 1px solid #ddd;
+	background: #fff;
+}
+
+.vlfm-library-modal__selection {
+	overflow: hidden;
+	color: $muted;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+/* Snackbars --------------------------------------------------------------- */
+
+.vlfm-snackbars {
+	position: fixed;
+	bottom: 24px;
+	left: 184px;
+	// Above dialogs, so "Saved" shows while one is open.
+	z-index: 100001;
+
+	.folded & {
+		left: 60px;
+	}
+
+	@media (max-width: 960px) {
+		left: 60px;
+	}
+
+	@media (max-width: 782px) {
+		left: 16px;
+	}
+}
+
+/* Block inspector --------------------------------------------------------- */
+
+.vlfm-inspector-summary {
+	margin: 8px 0 0;
+	color: $muted;
+}
+
+.vlfm-inspector-actions {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 12px;
+	margin-top: 16px;
+}
+
+.vlfm-poster-preview {
+	display: block;
+	width: 100%;
+	aspect-ratio: 16 / 9;
+	margin-bottom: 8px;
+	border-radius: 2px;
+	object-fit: cover;
+	background: #f0f0f0;
+}
+
+.vlfm-poster-actions {
+	display: flex;
+	gap: 8px;
+}

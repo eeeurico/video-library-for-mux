@@ -1,0 +1,130 @@
+/**
+ * The ACF Mux Video field. Builds on the library styles for the dialog and
+ * progress bar.
+ */
+$border-light: #dcdcde;
+$muted: #646970;
+
+.vlfm-acf-field {
+	position: relative;
+
+	.components-notice {
+		margin: 0 0 8px;
+	}
+}
+
+.vlfm-acf-field__empty {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px;
+	margin: 0;
+
+	.components-spinner {
+		margin: 0;
+	}
+}
+
+.vlfm-acf-field__video {
+	display: flex;
+	align-items: flex-start;
+	gap: 12px;
+}
+
+.vlfm-acf-field__media {
+	position: relative;
+	display: flex;
+	flex: 0 0 192px;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 6px;
+	box-sizing: border-box;
+	aspect-ratio: 16 / 9;
+	padding: 8px;
+	overflow: hidden;
+	border: 1px solid $border-light;
+	border-radius: 2px;
+	background: #f0f0f1;
+	color: $muted;
+	font-size: 12px;
+	line-height: 1.4;
+	text-align: center;
+
+	&.has-image {
+		background: #000;
+	}
+
+	&.is-error {
+		color: #d63638;
+	}
+
+	img {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.vlfm-progress {
+		align-self: stretch;
+	}
+
+	.components-spinner {
+		margin: 0;
+	}
+}
+
+.vlfm-acf-field__duration {
+	position: absolute;
+	right: 6px;
+	bottom: 6px;
+	padding: 1px 6px;
+	border-radius: 2px;
+	background: rgba(0, 0, 0, 0.75);
+	color: #fff;
+	font-size: 11px;
+	line-height: 18px;
+	font-variant-numeric: tabular-nums;
+}
+
+.vlfm-acf-field__details {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	min-width: 0;
+}
+
+.vlfm-acf-field__title {
+	overflow-wrap: anywhere;
+}
+
+.vlfm-acf-field__meta {
+	color: $muted;
+}
+
+.vlfm-acf-field__actions {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 12px;
+	margin-top: 4px;
+}
+
+.vlfm-acf-field__hint {
+	margin: 8px 0 0;
+	color: $muted;
+}
+
+@media (max-width: 600px) {
+
+	.vlfm-acf-field__video {
+		flex-direction: column;
+	}
+
+	.vlfm-acf-field__media {
+		flex-basis: auto;
+		width: 100%;
+	}
+}
