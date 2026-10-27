@@ -12,7 +12,7 @@ Upload videos to Mux from WordPress, keep the titles you give them, search your 
 
 == Description ==
 
-Video Library for Mux adds a video library to WordPress for videos hosted on [Mux](https://www.mux.com). You upload, find, rename and embed videos from the WordPress admin, and Mux handles encoding and streaming.
+Video Library for Mux adds a video library to WordPress for videos hosted on [Mux](https://www.mux.com). You upload, find, rename and embed videos from the WordPress admin, and Mux handles encoding and streaming. It is an independent plugin, not affiliated with or endorsed by Mux, Inc.
 
 **Titles stay the way you wrote them.** Each video is stored in WordPress with the title you give it, taken from the file name unless you change it, even while it is still uploading. The same title goes to Mux, so your Mux dashboard shows it too. Rename a video in WordPress and it is renamed in Mux.
 
