@@ -93,13 +93,15 @@ $theme: var(--wp-admin-theme-color, #2271b1);
 	display: block;
 	flex-shrink: 0;
 	aspect-ratio: 16 / 9;
+	// Without this, a vertical video's thumbnail stretches the box.
+	overflow: hidden;
 	background: #1e1e1e;
 
 	img {
 		display: block;
 		width: 100%;
 		height: 100%;
-		object-fit: cover;
+		object-fit: contain;
 	}
 }
 
