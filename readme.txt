@@ -1,4 +1,4 @@
-=== Video Library for Mux ===
+=== Videoteca – Video Library for Mux ===
 Contributors: eeeurico
 Tags: video, mux, streaming, video player, upload
 Requires at least: 6.4
@@ -12,7 +12,7 @@ Upload videos to Mux from WordPress, keep the titles you give them, search your 
 
 == Description ==
 
-Video Library for Mux adds a video library to WordPress for videos hosted on [Mux](https://www.mux.com). You upload, find, rename and embed videos from the WordPress admin, and Mux handles encoding and streaming. It is an independent plugin, not affiliated with or endorsed by Mux, Inc.
+Videoteca adds a video library to WordPress for videos hosted on [Mux](https://www.mux.com). You upload, find, rename and embed videos from the WordPress admin, and Mux handles encoding and streaming. It is an independent plugin, not affiliated with or endorsed by Mux, Inc.
 
 **Titles stay the way you wrote them.** Each video is stored in WordPress with the title you give it, taken from the file name unless you change it, even while it is still uploading. The same title goes to Mux, so your Mux dashboard shows it too. Rename a video in WordPress and it is renamed in Mux.
 
@@ -20,7 +20,7 @@ Video Library for Mux adds a video library to WordPress for videos hosted on [Mu
 
 = Features =
 
-* **Mux Videos** in the admin menu, right below Media: a library screen with thumbnails, durations and a short animated preview on hover. Filter by status, sort by date or title, and search.
+* **Mux Videos** in the admin menu: a library screen with thumbnails, durations and a short animated preview on hover. Filter by status, sort by date or title, and search.
 * **Uploads straight to Mux**: drag files onto the library or into the block. Files go from the browser to Mux in chunks, so your server's upload size limit does not apply, and an upload pauses and carries on if the connection drops.
 * **Import from a URL**: give Mux the address of a video file and it fetches it.
 * **Sync from Mux**: add the videos already in your Mux account to the library, using their Mux titles where they have one.
@@ -35,7 +35,7 @@ Video Library for Mux adds a video library to WordPress for videos hosted on [Mu
 * **Static renditions** (optional): an MP4 or audio-only file next to each stream.
 * **Webhooks** (optional): Mux tells your site when a video is ready, even after you close the page.
 
-Videos play in [Mux Player](https://www.mux.com/player), which is bundled with the plugin, so nothing loads from a CDN.
+Videos play in [Mux Player](https://www.mux.com/player), which is bundled with the plugin, so nothing loads from a CDN. Casting to Chromecast is turned off, because it needs Google's Cast SDK from Google's servers. AirPlay still works in Safari.
 
 = Source code and libraries =
 
@@ -45,6 +45,8 @@ Bundled libraries, both under the MIT License:
 
 * [Mux Player](https://github.com/muxinc/elements) (`@mux/mux-player`)
 * [UpChunk](https://github.com/muxinc/upchunk) (`@mux/upchunk`)
+
+`tools/no-cast-sdk-loader.js` removes the code in Mux Player that loads Google's Cast SDK, during the build.
 
 You need a Mux account. Mux charges for encoding, storage and delivery; see [Mux pricing](https://www.mux.com/pricing).
 
@@ -116,8 +118,8 @@ This plugin connects to Mux, a video hosting service run by Mux, Inc., to store,
 * **Mux Video API (api.mux.com)**: called from your server when you connect your account, upload or import a video, open or refresh the library, rename or delete a video, sync your account, or create a signing key. It sends your Mux access token, the titles you give your videos, the address of any video you import from a URL, and each video's ID in WordPress. Titles and IDs are stored in Mux as asset metadata. Descriptions stay in WordPress.
 * **Direct uploads**: when you upload a video, your browser sends the file to an upload address that Mux provides for that file.
 * **Mux image and stream delivery (image.mux.com, stream.mux.com)**: visitors' browsers load thumbnails and video streams from Mux whenever a page with a video is viewed, and the library and editor do the same for you.
-* **Mux Data**: Mux Player sends playback quality data (such as start-up time, errors and buffering, along with the viewer's browser, device and approximate location) to Mux Data when someone plays a video. You can turn this off under Mux Videos → Settings. Mux Data does not set cookies unless you allow it there. Previews in the WordPress admin are never sent.
-* **Webhooks**: if you set one up, Mux sends notices about your videos to `/wp-json/vlfm/v1/webhook` on your site.
+* **Mux Data** (off by default): if you turn on Viewer analytics under Mux Videos → Settings, Mux Player sends playback quality data (such as start-up time, errors and buffering, along with the viewer's browser, device and approximate location) to Mux Data when someone plays a video. Mux Data does not set cookies unless you allow that separately. Previews in the WordPress admin are never sent.
+* **Webhooks**: if you set one up, Mux sends notices about your videos to `/wp-json/vlfm/v1/webhook` on your site. The site turns them away until you save the webhook's signing secret.
 
 Mux terms of service: https://www.mux.com/terms
 Mux privacy policy: https://www.mux.com/privacy
@@ -146,7 +148,7 @@ No. Files go from your browser straight to Mux and never pass through your serve
 
 = Do I need webhooks? =
 
-No. While the library or editor is open, the plugin checks Mux until each new video is ready. A webhook lets your site hear about videos that finish after you close the page, and about videos deleted in the Mux dashboard. Webhooks cannot reach a local or password-protected site.
+No. While the library or editor is open, the plugin checks Mux until each new video is ready. A webhook lets your site hear about videos that finish after you close the page, and about videos deleted in the Mux dashboard. Webhooks need the signing secret from Mux saved in the settings, and they cannot reach a local or password-protected site.
 
 = Who can do what? =
 

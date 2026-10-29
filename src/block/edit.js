@@ -54,31 +54,31 @@ const SLOWER_SPEEDS = '0.5 0.75 1 1.25 1.5 1.75 2';
 const SPEED_OPTIONS = [
 	{
 		value: '',
-		label: __( 'Standard: 1× to 2×', 'video-library-for-mux' ),
+		label: __( 'Standard: 1× to 2×', 'videoteca-for-mux' ),
 	},
 	{
 		value: SLOWER_SPEEDS,
-		label: __( 'With slower speeds: 0.5× to 2×', 'video-library-for-mux' ),
+		label: __( 'With slower speeds: 0.5× to 2×', 'videoteca-for-mux' ),
 	},
-	{ value: 'off', label: __( 'Hidden', 'video-library-for-mux' ) },
+	{ value: 'off', label: __( 'Hidden', 'videoteca-for-mux' ) },
 ];
 
 const PRELOAD_OPTIONS = [
-	{ value: '', label: __( 'Browser default', 'video-library-for-mux' ) },
-	{ value: 'auto', label: __( 'Auto', 'video-library-for-mux' ) },
-	{ value: 'metadata', label: __( 'Metadata', 'video-library-for-mux' ) },
+	{ value: '', label: __( 'Browser default', 'videoteca-for-mux' ) },
+	{ value: 'auto', label: __( 'Auto', 'videoteca-for-mux' ) },
+	{ value: 'metadata', label: __( 'Metadata', 'videoteca-for-mux' ) },
 	{
 		value: 'none',
-		label: _x( 'None', 'preload value', 'video-library-for-mux' ),
+		label: _x( 'None', 'preload value', 'videoteca-for-mux' ),
 	},
 ];
 
 const RESOLUTION_OPTIONS = [
-	{ value: '', label: __( 'No limit', 'video-library-for-mux' ) },
+	{ value: '', label: __( 'No limit', 'videoteca-for-mux' ) },
 	{ value: '720p', label: '720p' },
 	{ value: '1080p', label: '1080p' },
 	{ value: '1440p', label: '1440p' },
-	{ value: '2160p', label: __( '2160p (4K)', 'video-library-for-mux' ) },
+	{ value: '2160p', label: __( '2160p (4K)', 'videoteca-for-mux' ) },
 ];
 
 /**
@@ -97,7 +97,7 @@ function speedOptions( value ) {
 			value,
 			label: sprintf(
 				/* translators: %s: list of playback speeds, such as "0.5 1 2". */
-				__( 'Custom: %s', 'video-library-for-mux' ),
+				__( 'Custom: %s', 'videoteca-for-mux' ),
 				value
 			),
 		},
@@ -109,10 +109,10 @@ function controlsHelp( controls, autoplay ) {
 		return null;
 	}
 	return autoplay
-		? __( 'A click on the video pauses it.', 'video-library-for-mux' )
+		? __( 'A click on the video pauses it.', 'videoteca-for-mux' )
 		: __(
 				'A click on the video plays and pauses it.',
-				'video-library-for-mux'
+				'videoteca-for-mux'
 			);
 }
 
@@ -170,11 +170,11 @@ function NotConfiguredHint() {
 		<p className="vlfm-placeholder__hint">
 			{ __(
 				'Connect a Mux account to upload videos.',
-				'video-library-for-mux'
+				'videoteca-for-mux'
 			) }{ ' ' }
 			{ config.settingsUrl && (
 				<a href={ config.settingsUrl }>
-					{ __( 'Open Mux Video settings', 'video-library-for-mux' ) }
+					{ __( 'Open Mux Video settings', 'videoteca-for-mux' ) }
 				</a>
 			) }
 		</p>
@@ -212,11 +212,11 @@ function Preview( {
 				<p>
 					{ __(
 						'This video is no longer in the Mux video library.',
-						'video-library-for-mux'
+						'videoteca-for-mux'
 					) }
 				</p>
 				<Button variant="secondary" onClick={ onReplace }>
-					{ __( 'Choose another video', 'video-library-for-mux' ) }
+					{ __( 'Choose another video', 'videoteca-for-mux' ) }
 				</Button>
 			</StateBox>
 		);
@@ -240,14 +240,11 @@ function Preview( {
 				<p>{ uploadStatusText( upload ) }</p>
 				{ upload.phase === 'error' ? (
 					<Button variant="secondary" onClick={ onReplace }>
-						{ __(
-							'Choose another video',
-							'video-library-for-mux'
-						) }
+						{ __( 'Choose another video', 'videoteca-for-mux' ) }
 					</Button>
 				) : (
 					<Button variant="secondary" onClick={ onCancelUpload }>
-						{ __( 'Cancel upload', 'video-library-for-mux' ) }
+						{ __( 'Cancel upload', 'videoteca-for-mux' ) }
 					</Button>
 				) }
 			</StateBox>
@@ -261,10 +258,7 @@ function Preview( {
 				<p>
 					{ sprintf(
 						/* translators: %s: video title. */
-						__(
-							'Mux is processing “%s”…',
-							'video-library-for-mux'
-						),
+						__( 'Mux is processing “%s”…', 'videoteca-for-mux' ),
 						video.title
 					) }
 				</p>
@@ -280,13 +274,13 @@ function Preview( {
 						/* translators: %s: video title. */
 						__(
 							'“%s” has not finished uploading. If the upload stopped, upload it again.',
-							'video-library-for-mux'
+							'videoteca-for-mux'
 						),
 						video.title
 					) }
 				</p>
 				<Button variant="secondary" onClick={ onReplace }>
-					{ __( 'Choose another video', 'video-library-for-mux' ) }
+					{ __( 'Choose another video', 'videoteca-for-mux' ) }
 				</Button>
 			</StateBox>
 		);
@@ -299,13 +293,13 @@ function Preview( {
 					<strong>
 						{ __(
 							'Mux could not process this video.',
-							'video-library-for-mux'
+							'videoteca-for-mux'
 						) }
 					</strong>
 				</p>
 				{ video.error && <p>{ video.error }</p> }
 				<Button variant="secondary" onClick={ onReplace }>
-					{ __( 'Choose another video', 'video-library-for-mux' ) }
+					{ __( 'Choose another video', 'videoteca-for-mux' ) }
 				</Button>
 			</StateBox>
 		);
@@ -317,7 +311,7 @@ function Preview( {
 				<p>
 					{ __(
 						'This video uses signed playback. Add a signing key in Mux Videos → Settings so it can play.',
-						'video-library-for-mux'
+						'videoteca-for-mux'
 					) }
 				</p>
 			</StateBox>
@@ -370,7 +364,7 @@ function TitleControl( { video } ) {
 		try {
 			await saveVideo( video.id, { title: trimmed } );
 			createSuccessNotice(
-				__( 'Video title updated.', 'video-library-for-mux' ),
+				__( 'Video title updated.', 'videoteca-for-mux' ),
 				{ type: 'snackbar' }
 			);
 		} catch ( error ) {
@@ -381,10 +375,10 @@ function TitleControl( { video } ) {
 
 	return (
 		<TextControl
-			label={ __( 'Title', 'video-library-for-mux' ) }
+			label={ __( 'Title', 'videoteca-for-mux' ) }
 			help={ __(
 				'Renames the video everywhere: the library, other pages and Mux.',
-				'video-library-for-mux'
+				'videoteca-for-mux'
 			) }
 			value={ title }
 			onChange={ setTitle }
@@ -407,12 +401,12 @@ function PosterControl( { posterId, posterUrl, onChange } ) {
 			<BaseControl
 				help={ __(
 					'Shown before the video plays, instead of a frame from the video.',
-					'video-library-for-mux'
+					'videoteca-for-mux'
 				) }
 				__nextHasNoMarginBottom
 			>
 				<BaseControl.VisualLabel>
-					{ __( 'Poster image', 'video-library-for-mux' ) }
+					{ __( 'Poster image', 'videoteca-for-mux' ) }
 				</BaseControl.VisualLabel>
 				{ posterUrl && (
 					<img
@@ -425,7 +419,7 @@ function PosterControl( { posterId, posterUrl, onChange } ) {
 					<MediaUpload
 						title={ __(
 							'Select poster image',
-							'video-library-for-mux'
+							'videoteca-for-mux'
 						) }
 						allowedTypes={ [ 'image' ] }
 						value={ posterId }
@@ -437,8 +431,8 @@ function PosterControl( { posterId, posterUrl, onChange } ) {
 								__next40pxDefaultSize
 							>
 								{ posterId
-									? __( 'Replace', 'video-library-for-mux' )
-									: __( 'Select', 'video-library-for-mux' ) }
+									? __( 'Replace', 'videoteca-for-mux' )
+									: __( 'Select', 'videoteca-for-mux' ) }
 							</Button>
 						) }
 					/>
@@ -448,7 +442,7 @@ function PosterControl( { posterId, posterUrl, onChange } ) {
 							onClick={ () => onChange( undefined ) }
 							__next40pxDefaultSize
 						>
-							{ __( 'Remove', 'video-library-for-mux' ) }
+							{ __( 'Remove', 'videoteca-for-mux' ) }
 						</Button>
 					) }
 				</div>
@@ -529,10 +523,10 @@ export default function Edit( { attributes, setAttributes, isSelected } ) {
 			<div { ...blockProps }>
 				<Placeholder
 					icon={ <BlockIcon icon="video-alt3" /> }
-					label={ __( 'Mux Video', 'video-library-for-mux' ) }
+					label={ __( 'Mux Video', 'videoteca-for-mux' ) }
 					instructions={ __(
 						'Upload a video to Mux, choose one from your video library, or import one from a URL.',
-						'video-library-for-mux'
+						'videoteca-for-mux'
 					) }
 					className="vlfm-placeholder"
 				>
@@ -562,7 +556,7 @@ export default function Edit( { attributes, setAttributes, isSelected } ) {
 										>
 											{ __(
 												'Upload',
-												'video-library-for-mux'
+												'videoteca-for-mux'
 											) }
 										</Button>
 									) }
@@ -572,10 +566,7 @@ export default function Edit( { attributes, setAttributes, isSelected } ) {
 								variant="secondary"
 								onClick={ () => setModalTab( 'library' ) }
 							>
-								{ __(
-									'Video library',
-									'video-library-for-mux'
-								) }
+								{ __( 'Video library', 'videoteca-for-mux' ) }
 							</Button>
 							{ canUpload && (
 								<Button
@@ -584,7 +575,7 @@ export default function Edit( { attributes, setAttributes, isSelected } ) {
 								>
 									{ __(
 										'Import from URL',
-										'video-library-for-mux'
+										'videoteca-for-mux'
 									) }
 								</Button>
 							) }
@@ -601,12 +592,12 @@ export default function Edit( { attributes, setAttributes, isSelected } ) {
 		<>
 			<BlockControls group="other">
 				<ToolbarButton onClick={ () => setModalTab( 'library' ) }>
-					{ __( 'Replace', 'video-library-for-mux' ) }
+					{ __( 'Replace', 'videoteca-for-mux' ) }
 				</ToolbarButton>
 			</BlockControls>
 
 			<InspectorControls>
-				<PanelBody title={ __( 'Video', 'video-library-for-mux' ) }>
+				<PanelBody title={ __( 'Video', 'videoteca-for-mux' ) }>
 					{ video && (
 						<>
 							<TitleControl video={ video } />
@@ -627,27 +618,24 @@ export default function Edit( { attributes, setAttributes, isSelected } ) {
 							variant="secondary"
 							onClick={ () => setModalTab( 'library' ) }
 						>
-							{ __( 'Replace video', 'video-library-for-mux' ) }
+							{ __( 'Replace video', 'videoteca-for-mux' ) }
 						</Button>
 						{ config.libraryUrl && (
 							<ExternalLink href={ config.libraryUrl }>
 								{ __(
 									'Open the video library',
-									'video-library-for-mux'
+									'videoteca-for-mux'
 								) }
 							</ExternalLink>
 						) }
 					</div>
 				</PanelBody>
-				<PanelBody title={ __( 'Playback', 'video-library-for-mux' ) }>
+				<PanelBody title={ __( 'Playback', 'videoteca-for-mux' ) }>
 					<ToggleControl
-						label={ __(
-							'Background video',
-							'video-library-for-mux'
-						) }
+						label={ __( 'Background video', 'videoteca-for-mux' ) }
 						help={ __(
 							'Plays muted and on a loop, with no controls, like a moving image. A click pauses it.',
-							'video-library-for-mux'
+							'videoteca-for-mux'
 						) }
 						checked={ background }
 						onChange={ ( value ) =>
@@ -658,15 +646,12 @@ export default function Edit( { attributes, setAttributes, isSelected } ) {
 					{ ! background && (
 						<>
 							<ToggleControl
-								label={ __(
-									'Autoplay',
-									'video-library-for-mux'
-								) }
+								label={ __( 'Autoplay', 'videoteca-for-mux' ) }
 								help={
 									autoplay
 										? __(
 												'Browsers only autoplay muted videos, so it starts muted.',
-												'video-library-for-mux'
+												'videoteca-for-mux'
 											)
 										: null
 								}
@@ -677,7 +662,7 @@ export default function Edit( { attributes, setAttributes, isSelected } ) {
 								__nextHasNoMarginBottom
 							/>
 							<ToggleControl
-								label={ __( 'Muted', 'video-library-for-mux' ) }
+								label={ __( 'Muted', 'videoteca-for-mux' ) }
 								checked={ muted }
 								onChange={ ( value ) =>
 									setAttributes( { muted: value } )
@@ -685,7 +670,7 @@ export default function Edit( { attributes, setAttributes, isSelected } ) {
 								__nextHasNoMarginBottom
 							/>
 							<ToggleControl
-								label={ __( 'Loop', 'video-library-for-mux' ) }
+								label={ __( 'Loop', 'videoteca-for-mux' ) }
 								checked={ loop }
 								onChange={ ( value ) =>
 									setAttributes( { loop: value } )
@@ -700,7 +685,7 @@ export default function Edit( { attributes, setAttributes, isSelected } ) {
 						step={ 0.1 }
 						label={ __(
 							'Start at (seconds)',
-							'video-library-for-mux'
+							'videoteca-for-mux'
 						) }
 						value={ startTime ?? '' }
 						onChange={ ( value ) =>
@@ -716,10 +701,10 @@ export default function Edit( { attributes, setAttributes, isSelected } ) {
 					/>
 					{ ! background && ! autoplay && (
 						<SelectControl
-							label={ __( 'Preload', 'video-library-for-mux' ) }
+							label={ __( 'Preload', 'videoteca-for-mux' ) }
 							help={ __(
 								'None loads nothing until someone presses play.',
-								'video-library-for-mux'
+								'videoteca-for-mux'
 							) }
 							value={ preload }
 							options={ PRELOAD_OPTIONS }
@@ -731,13 +716,13 @@ export default function Edit( { attributes, setAttributes, isSelected } ) {
 						/>
 					) }
 				</PanelBody>
-				<PanelBody title={ __( 'Player', 'video-library-for-mux' ) }>
+				<PanelBody title={ __( 'Player', 'videoteca-for-mux' ) }>
 					{ ! background && (
 						<>
 							<ToggleControl
 								label={ __(
 									'Show controls',
-									'video-library-for-mux'
+									'videoteca-for-mux'
 								) }
 								help={ controlsHelp( controls, autoplay ) }
 								checked={ controls }
@@ -750,7 +735,7 @@ export default function Edit( { attributes, setAttributes, isSelected } ) {
 								<ToggleControl
 									label={ __(
 										'Show title in the player',
-										'video-library-for-mux'
+										'videoteca-for-mux'
 									) }
 									checked={ showTitle }
 									onChange={ ( value ) =>
@@ -762,13 +747,13 @@ export default function Edit( { attributes, setAttributes, isSelected } ) {
 							<ToggleControl
 								label={ __(
 									'Start with captions off',
-									'video-library-for-mux'
+									'videoteca-for-mux'
 								) }
 								help={
 									controls
 										? __(
 												'Visitors can turn captions on in the player.',
-												'video-library-for-mux'
+												'videoteca-for-mux'
 											)
 										: null
 								}
@@ -782,7 +767,7 @@ export default function Edit( { attributes, setAttributes, isSelected } ) {
 								<SelectControl
 									label={ __(
 										'Speed menu',
-										'video-library-for-mux'
+										'videoteca-for-mux'
 									) }
 									value={ playbackRates }
 									options={ speedOptions( playbackRates ) }
@@ -800,11 +785,11 @@ export default function Edit( { attributes, setAttributes, isSelected } ) {
 					<SelectControl
 						label={ __(
 							'Maximum resolution',
-							'video-library-for-mux'
+							'videoteca-for-mux'
 						) }
 						help={ __(
 							'A lower limit uses less data for visitors and can lower Mux delivery costs.',
-							'video-library-for-mux'
+							'videoteca-for-mux'
 						) }
 						value={ maxResolution }
 						options={ RESOLUTION_OPTIONS }
@@ -826,16 +811,13 @@ export default function Edit( { attributes, setAttributes, isSelected } ) {
 
 			<InspectorControls group="styles">
 				<PanelColorSettings
-					title={ __( 'Color', 'video-library-for-mux' ) }
+					title={ __( 'Color', 'videoteca-for-mux' ) }
 					colorSettings={ [
 						{
 							value: accentColor,
 							onChange: ( value ) =>
 								setAttributes( { accentColor: value } ),
-							label: __(
-								'Accent color',
-								'video-library-for-mux'
-							),
+							label: __( 'Accent color', 'videoteca-for-mux' ),
 						},
 					] }
 				/>

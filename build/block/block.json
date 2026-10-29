@@ -14,7 +14,7 @@
     "player",
     "upload"
   ],
-  "textdomain": "video-library-for-mux",
+  "textdomain": "videoteca-for-mux",
   "attributes": {
     "videoId": {
       "type": "number"

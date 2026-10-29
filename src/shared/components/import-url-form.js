@@ -58,7 +58,7 @@ export default function ImportUrlForm( { onImported, submitLabel } ) {
 			<p>
 				{ __(
 					'Mux downloads the file from this address, so it has to be publicly reachable. Links to pages, such as YouTube, do not work.',
-					'video-library-for-mux'
+					'videoteca-for-mux'
 				) }
 			</p>
 			{ error && (
@@ -68,7 +68,7 @@ export default function ImportUrlForm( { onImported, submitLabel } ) {
 			) }
 			<TextControl
 				type="url"
-				label={ __( 'Video file URL', 'video-library-for-mux' ) }
+				label={ __( 'Video file URL', 'videoteca-for-mux' ) }
 				placeholder="https://example.com/video.mp4"
 				value={ url }
 				onChange={ setUrl }
@@ -77,11 +77,11 @@ export default function ImportUrlForm( { onImported, submitLabel } ) {
 				__next40pxDefaultSize
 			/>
 			<TextControl
-				label={ __( 'Title', 'video-library-for-mux' ) }
+				label={ __( 'Title', 'videoteca-for-mux' ) }
 				placeholder={ titleFromUrl( url ) }
 				help={ __(
 					'Leave it empty to use the file name.',
-					'video-library-for-mux'
+					'videoteca-for-mux'
 				) }
 				value={ title }
 				onChange={ setTitle }
@@ -95,7 +95,7 @@ export default function ImportUrlForm( { onImported, submitLabel } ) {
 				disabled={ isImporting || ! url.trim() }
 				__next40pxDefaultSize
 			>
-				{ submitLabel || __( 'Import', 'video-library-for-mux' ) }
+				{ submitLabel || __( 'Import', 'videoteca-for-mux' ) }
 			</Button>
 		</form>
 	);

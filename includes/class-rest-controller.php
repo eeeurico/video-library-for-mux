@@ -123,7 +123,7 @@ final class Rest_Controller {
 			array(
 				'methods'             => WP_REST_Server::CREATABLE,
 				'callback'            => array( __CLASS__, 'refresh_video' ),
-				'permission_callback' => array( __CLASS__, 'can_browse' ),
+				'permission_callback' => array( __CLASS__, 'can_edit_video' ),
 				'args'                => $id_arg,
 			)
 		);
@@ -197,8 +197,9 @@ final class Rest_Controller {
 			array(
 				'methods'             => WP_REST_Server::CREATABLE,
 				'callback'            => array( Webhooks::class, 'handle' ),
-				// Mux calls this without a WordPress login. Webhooks::handle() checks
-				// the signature and only acts on state it reads back from Mux.
+				// Mux calls this without a WordPress login. Webhooks::handle() turns
+				// away anything not signed with the saved secret, and only acts on
+				// state it reads back from Mux.
 				'permission_callback' => '__return_true',
 			)
 		);
@@ -259,7 +260,7 @@ final class Rest_Controller {
 	public static function not_configured_error() {
 		return new WP_Error(
 			'vlfm_not_configured',
-			__( 'Connect a Mux account in Mux Videos → Settings first.', 'video-library-for-mux' ),
+			__( 'Connect a Mux account in Mux Videos → Settings first.', 'videoteca-for-mux' ),
 			array( 'status' => 409 )
 		);
 	}
@@ -314,7 +315,7 @@ final class Rest_Controller {
 		$fields = array();
 		if ( null !== $request['title'] ) {
 			if ( '' === trim( $request['title'] ) ) {
-				return new WP_Error( 'vlfm_empty_title', __( 'Give the video a title.', 'video-library-for-mux' ), array( 'status' => 400 ) );
+				return new WP_Error( 'vlfm_empty_title', __( 'Give the video a title.', 'videoteca-for-mux' ), array( 'status' => 400 ) );
 			}
 			$fields['title'] = $request['title'];
 		}
@@ -417,7 +418,7 @@ final class Rest_Controller {
 
 		if ( is_wp_error( $upload ) || empty( $upload['id'] ) || empty( $upload['url'] ) ) {
 			wp_delete_post( $post_id, true );
-			return is_wp_error( $upload ) ? $upload : new WP_Error( 'vlfm_upload_failed', __( 'Mux did not return an upload address.', 'video-library-for-mux' ), array( 'status' => 502 ) );
+			return is_wp_error( $upload ) ? $upload : new WP_Error( 'vlfm_upload_failed', __( 'Mux did not return an upload address.', 'videoteca-for-mux' ), array( 'status' => 502 ) );
 		}
 
 		Videos::set_meta( $post_id, Videos::META_UPLOAD_ID, (string) $upload['id'] );
@@ -445,7 +446,7 @@ final class Rest_Controller {
 		$url    = esc_url_raw( trim( $request['url'] ), array( 'http', 'https' ) );
 		$scheme = wp_parse_url( $url, PHP_URL_SCHEME );
 		if ( '' === $url || ! in_array( $scheme, array( 'http', 'https' ), true ) ) {
-			return new WP_Error( 'vlfm_invalid_url', __( 'Enter a web address that starts with http:// or https://.', 'video-library-for-mux' ), array( 'status' => 400 ) );
+			return new WP_Error( 'vlfm_invalid_url', __( 'Enter a web address that starts with http:// or https://.', 'videoteca-for-mux' ), array( 'status' => 400 ) );
 		}
 
 		$path     = (string) wp_parse_url( $url, PHP_URL_PATH );
@@ -471,7 +472,7 @@ final class Rest_Controller {
 		$asset = $client->create_asset( $settings );
 		if ( is_wp_error( $asset ) || empty( $asset['id'] ) ) {
 			wp_delete_post( $post_id, true );
-			return is_wp_error( $asset ) ? $asset : new WP_Error( 'vlfm_import_failed', __( 'Mux did not create the video.', 'video-library-for-mux' ), array( 'status' => 502 ) );
+			return is_wp_error( $asset ) ? $asset : new WP_Error( 'vlfm_import_failed', __( 'Mux did not create the video.', 'videoteca-for-mux' ), array( 'status' => 502 ) );
 		}
 
 		Videos::apply_asset( $post_id, $asset );
@@ -499,7 +500,7 @@ final class Rest_Controller {
 	private static function find_video( $id ) {
 		$post = get_post( (int) $id );
 		if ( ! Videos::is_video( $post ) ) {
-			return new WP_Error( 'vlfm_not_found', __( 'This video is not in the library.', 'video-library-for-mux' ), array( 'status' => 404 ) );
+			return new WP_Error( 'vlfm_not_found', __( 'This video is not in the library.', 'videoteca-for-mux' ), array( 'status' => 404 ) );
 		}
 		return $post;
 	}

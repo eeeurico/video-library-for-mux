@@ -8,7 +8,7 @@
 	"icon": "video-alt3",
 	"description": "Upload a video to Mux, or choose one from your Mux video library, and play it with Mux Player.",
 	"keywords": [ "video", "mux", "stream", "player", "upload" ],
-	"textdomain": "video-library-for-mux",
+	"textdomain": "videoteca-for-mux",
 	"attributes": {
 		"videoId": {
 			"type": "number"

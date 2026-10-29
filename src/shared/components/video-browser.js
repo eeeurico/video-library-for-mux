@@ -19,25 +19,25 @@ const PER_PAGE = 40;
 const SEARCH_DELAY = 300;
 
 const STATUS_OPTIONS = [
-	{ value: '', label: __( 'All videos', 'video-library-for-mux' ) },
-	{ value: 'ready', label: __( 'Ready', 'video-library-for-mux' ) },
-	{ value: 'processing', label: __( 'Processing', 'video-library-for-mux' ) },
-	{ value: 'errored', label: __( 'Failed', 'video-library-for-mux' ) },
+	{ value: '', label: __( 'All videos', 'videoteca-for-mux' ) },
+	{ value: 'ready', label: __( 'Ready', 'videoteca-for-mux' ) },
+	{ value: 'processing', label: __( 'Processing', 'videoteca-for-mux' ) },
+	{ value: 'errored', label: __( 'Failed', 'videoteca-for-mux' ) },
 ];
 
 const SORT_OPTIONS = [
 	{
 		value: 'date-desc',
-		label: __( 'Newest first', 'video-library-for-mux' ),
+		label: __( 'Newest first', 'videoteca-for-mux' ),
 	},
-	{ value: 'date-asc', label: __( 'Oldest first', 'video-library-for-mux' ) },
+	{ value: 'date-asc', label: __( 'Oldest first', 'videoteca-for-mux' ) },
 	{
 		value: 'title-asc',
-		label: __( 'Title, A to Z', 'video-library-for-mux' ),
+		label: __( 'Title, A to Z', 'videoteca-for-mux' ),
 	},
 	{
 		value: 'title-desc',
-		label: __( 'Title, Z to A', 'video-library-for-mux' ),
+		label: __( 'Title, Z to A', 'videoteca-for-mux' ),
 	},
 ];
 
@@ -163,10 +163,7 @@ export default function VideoBrowser( {
 			<div className="vlfm-toolbar">
 				<div className="vlfm-toolbar__filters">
 					<SelectControl
-						label={ __(
-							'Filter by status',
-							'video-library-for-mux'
-						) }
+						label={ __( 'Filter by status', 'videoteca-for-mux' ) }
 						hideLabelFromVision
 						value={ status }
 						options={ STATUS_OPTIONS }
@@ -178,7 +175,7 @@ export default function VideoBrowser( {
 						__next40pxDefaultSize
 					/>
 					<SelectControl
-						label={ __( 'Sort by', 'video-library-for-mux' ) }
+						label={ __( 'Sort by', 'videoteca-for-mux' ) }
 						hideLabelFromVision
 						value={ sort }
 						options={ SORT_OPTIONS }
@@ -192,10 +189,10 @@ export default function VideoBrowser( {
 				</div>
 				<SearchControl
 					className="vlfm-toolbar__search"
-					label={ __( 'Search videos', 'video-library-for-mux' ) }
+					label={ __( 'Search videos', 'videoteca-for-mux' ) }
 					placeholder={ __(
 						'Search by title, file name or ID',
-						'video-library-for-mux'
+						'videoteca-for-mux'
 					) }
 					value={ searchInput }
 					onChange={ setSearchInput }
@@ -212,7 +209,7 @@ export default function VideoBrowser( {
 							setRetryToken( ( token ) => token + 1 )
 						}
 					>
-						{ __( 'Try again', 'video-library-for-mux' ) }
+						{ __( 'Try again', 'videoteca-for-mux' ) }
 					</Button>
 				</Notice>
 			) }
@@ -232,13 +229,13 @@ export default function VideoBrowser( {
 										/* translators: %s: search terms. */
 										__(
 											'No videos match “%s”.',
-											'video-library-for-mux'
+											'videoteca-for-mux'
 										),
 										search
 									)
 								: __(
 										'No videos with this status.',
-										'video-library-for-mux'
+										'videoteca-for-mux'
 									) }
 						</p>
 					) : (
@@ -246,7 +243,7 @@ export default function VideoBrowser( {
 							<p className="vlfm-browser__empty-title">
 								{ __(
 									'Your Mux video library is empty.',
-									'video-library-for-mux'
+									'videoteca-for-mux'
 								) }
 							</p>
 							{ emptyActions }
@@ -259,7 +256,7 @@ export default function VideoBrowser( {
 				<ul
 					className="vlfm-grid"
 					aria-busy={ isLoading }
-					aria-label={ __( 'Videos', 'video-library-for-mux' ) }
+					aria-label={ __( 'Videos', 'videoteca-for-mux' ) }
 				>
 					{ visibleIds.map( ( id ) => (
 						<VideoCard
@@ -289,7 +286,7 @@ export default function VideoBrowser( {
 								'Showing %1$d of %2$d video',
 								'Showing %1$d of %2$d videos',
 								shownTotal,
-								'video-library-for-mux'
+								'videoteca-for-mux'
 							),
 							visibleIds.length,
 							shownTotal
@@ -303,7 +300,7 @@ export default function VideoBrowser( {
 							disabled={ isLoading }
 							__next40pxDefaultSize
 						>
-							{ __( 'Load more', 'video-library-for-mux' ) }
+							{ __( 'Load more', 'videoteca-for-mux' ) }
 						</Button>
 					) }
 				</div>

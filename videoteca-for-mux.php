@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name:       Video Library for Mux
+ * Plugin Name:       Videoteca – Video Library for Mux
  * Plugin URI:        https://github.com/eeeurico/video-library-for-mux
  * Description:       Upload videos to Mux from the WordPress admin, keep their titles, search your library and embed them with a block, shortcode or ACF field.
  * Version:           1.0.0
@@ -10,7 +10,7 @@
  * Author URI:        https://github.com/eeeurico
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       video-library-for-mux
+ * Text Domain:       videoteca-for-mux
  *
  * @package VideoLibraryForMux
  */

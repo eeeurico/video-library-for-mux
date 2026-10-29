@@ -12,5 +12,5 @@
 		'wp-notices',
 		'wp-url'
 	),
-	'version' => '813053c931d2b933b6c8'
+	'version' => '8855c85c3768079a9c63'
 );

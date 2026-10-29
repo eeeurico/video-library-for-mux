@@ -300,7 +300,7 @@ async function runUpload( key, file, onCreated ) {
 			phase: 'error',
 			error:
 				event.detail?.message ||
-				__( 'The upload failed.', 'video-library-for-mux' ),
+				__( 'The upload failed.', 'videoteca-for-mux' ),
 		} );
 	} );
 	chunkUpload.on( 'success', () => {

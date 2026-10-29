@@ -15,8 +15,8 @@
   <rect width="1544" height="500" fill="url(#glow)"/>
 
   <g font-family="Helvetica Neue, Helvetica, Arial, sans-serif">
-    <text x="88" y="214" font-size="84" font-weight="700" fill="#fff" letter-spacing="-2">Video Library</text>
-    <text x="92" y="276" font-size="40" fill="#8c8f94">for Mux</text>
+    <text x="88" y="214" font-size="84" font-weight="700" fill="#fff" letter-spacing="-2">Videoteca</text>
+    <text x="92" y="276" font-size="40" fill="#8c8f94">Video Library for Mux</text>
     <text x="92" y="346" font-size="31" fill="#c3c4c7">Upload, search and embed from WordPress.</text>
   </g>
 

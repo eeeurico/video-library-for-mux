@@ -34,7 +34,7 @@ function Media( { video, error, upload } ) {
 					<span>
 						{ __(
 							'This video is no longer in the video library.',
-							'video-library-for-mux'
+							'videoteca-for-mux'
 						) }
 					</span>
 				) : (
@@ -73,7 +73,7 @@ function Media( { video, error, upload } ) {
 					{ status === 'errored'
 						? __(
 								'Mux could not process this video.',
-								'video-library-for-mux'
+								'videoteca-for-mux'
 							)
 						: statusText( { status } ) }
 				</span>
@@ -86,7 +86,7 @@ function Media( { video, error, upload } ) {
 			<div className="vlfm-acf-field__media">
 				<Icon icon="lock" />
 				<span>
-					{ __( 'Needs a signing key', 'video-library-for-mux' ) }
+					{ __( 'Needs a signing key', 'videoteca-for-mux' ) }
 				</span>
 			</div>
 		);
@@ -209,7 +209,7 @@ export default function VideoField( { initialId, onChange } ) {
 									>
 										{ __(
 											'Cancel upload',
-											'video-library-for-mux'
+											'videoteca-for-mux'
 										) }
 									</button>
 								) : (
@@ -223,7 +223,7 @@ export default function VideoField( { initialId, onChange } ) {
 										>
 											{ __(
 												'Replace',
-												'video-library-for-mux'
+												'videoteca-for-mux'
 											) }
 										</button>
 										<button
@@ -233,7 +233,7 @@ export default function VideoField( { initialId, onChange } ) {
 										>
 											{ __(
 												'Remove',
-												'video-library-for-mux'
+												'videoteca-for-mux'
 											) }
 										</button>
 									</>
@@ -251,20 +251,14 @@ export default function VideoField( { initialId, onChange } ) {
 						</>
 					) : (
 						<>
-							{ __(
-								'No video selected',
-								'video-library-for-mux'
-							) }
+							{ __( 'No video selected', 'videoteca-for-mux' ) }
 							{ config.canBrowse && (
 								<button
 									type="button"
 									className="button"
 									onClick={ () => setModalTab( 'library' ) }
 								>
-									{ __(
-										'Add Video',
-										'video-library-for-mux'
-									) }
+									{ __( 'Add Video', 'videoteca-for-mux' ) }
 								</button>
 							) }
 						</>
@@ -276,13 +270,13 @@ export default function VideoField( { initialId, onChange } ) {
 				<p className="vlfm-acf-field__hint">
 					{ __(
 						'Connect a Mux account to upload videos.',
-						'video-library-for-mux'
+						'videoteca-for-mux'
 					) }{ ' ' }
 					{ config.settingsUrl && (
 						<a href={ config.settingsUrl }>
 							{ __(
 								'Open Mux Video settings',
-								'video-library-for-mux'
+								'videoteca-for-mux'
 							) }
 						</a>
 					) }

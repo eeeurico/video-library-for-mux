@@ -44,7 +44,7 @@ export function uploadFiles( fileList, createErrorNotice, options = {} ) {
 					/* translators: %s: file name. */
 					__(
 						'“%s” is not a video or audio file.',
-						'video-library-for-mux'
+						'videoteca-for-mux'
 					),
 					file.name
 				),
@@ -76,7 +76,7 @@ export function UploadArea( {
 				<Button
 					className="vlfm-uploader__close"
 					icon="no-alt"
-					label={ __( 'Close uploader', 'video-library-for-mux' ) }
+					label={ __( 'Close uploader', 'videoteca-for-mux' ) }
 					onClick={ onClose }
 				/>
 			) }
@@ -85,22 +85,16 @@ export function UploadArea( {
 					onFilesDrop={ onFiles }
 					label={ __(
 						'Drop files to upload to Mux',
-						'video-library-for-mux'
+						'videoteca-for-mux'
 					) }
 				/>
 			) }
 			<p className="vlfm-uploader__title">
 				{ multiple
-					? __(
-							'Drop video files to upload',
-							'video-library-for-mux'
-						)
-					: __(
-							'Drop a video file to upload',
-							'video-library-for-mux'
-						) }
+					? __( 'Drop video files to upload', 'videoteca-for-mux' )
+					: __( 'Drop a video file to upload', 'videoteca-for-mux' ) }
 			</p>
-			<p>{ __( 'or', 'video-library-for-mux' ) }</p>
+			<p>{ __( 'or', 'videoteca-for-mux' ) }</p>
 			<FormFileUpload
 				accept={ ACCEPT }
 				multiple={ multiple }
@@ -115,15 +109,15 @@ export function UploadArea( {
 						__next40pxDefaultSize
 					>
 						{ multiple
-							? __( 'Select files', 'video-library-for-mux' )
-							: __( 'Select a file', 'video-library-for-mux' ) }
+							? __( 'Select files', 'videoteca-for-mux' )
+							: __( 'Select a file', 'videoteca-for-mux' ) }
 					</Button>
 				) }
 			/>
 			<p className="vlfm-uploader__note">
 				{ __(
 					'Files go straight from your browser to Mux, so the WordPress upload size limit does not apply.',
-					'video-library-for-mux'
+					'videoteca-for-mux'
 				) }
 			</p>
 		</div>
@@ -153,7 +147,7 @@ function UploadRow( { upload } ) {
 		<li className={ `vlfm-upload is-${ upload.phase }` }>
 			<div className="vlfm-upload__main">
 				<TextControl
-					label={ __( 'Title', 'video-library-for-mux' ) }
+					label={ __( 'Title', 'videoteca-for-mux' ) }
 					value={ title }
 					onChange={ setTitle }
 					onBlur={ commitTitle }
@@ -188,14 +182,14 @@ function UploadRow( { upload } ) {
 						isDestructive
 						onClick={ () => cancelUpload( upload.key ) }
 					>
-						{ __( 'Cancel', 'video-library-for-mux' ) }
+						{ __( 'Cancel', 'videoteca-for-mux' ) }
 					</Button>
 				) : (
 					<Button
 						variant="tertiary"
 						onClick={ () => cancelUpload( upload.key ) }
 					>
-						{ __( 'Remove', 'video-library-for-mux' ) }
+						{ __( 'Remove', 'videoteca-for-mux' ) }
 					</Button>
 				) }
 			</div>
@@ -218,7 +212,7 @@ export function UploadList() {
 	return (
 		<ul
 			className="vlfm-uploads"
-			aria-label={ __( 'Uploads', 'video-library-for-mux' ) }
+			aria-label={ __( 'Uploads', 'videoteca-for-mux' ) }
 		>
 			{ uploads.map( ( upload ) => (
 				<UploadRow key={ upload.key } upload={ upload } />

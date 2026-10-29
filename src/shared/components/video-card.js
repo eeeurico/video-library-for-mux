@@ -19,7 +19,7 @@ function CardState( { video, upload } ) {
 				<span>
 					{ sprintf(
 						/* translators: %d: percentage uploaded. */
-						__( 'Uploading %d%%', 'video-library-for-mux' ),
+						__( 'Uploading %d%%', 'videoteca-for-mux' ),
 						upload.progress
 					) }
 				</span>
@@ -42,7 +42,7 @@ function CardState( { video, upload } ) {
 			<span className="vlfm-card__state">
 				<Icon icon="upload" />
 				<span>
-					{ __( 'Upload not finished', 'video-library-for-mux' ) }
+					{ __( 'Upload not finished', 'videoteca-for-mux' ) }
 				</span>
 			</span>
 		);
@@ -62,7 +62,7 @@ function CardState( { video, upload } ) {
 			<span className="vlfm-card__state">
 				<Icon icon="lock" />
 				<span>
-					{ __( 'Needs a signing key', 'video-library-for-mux' ) }
+					{ __( 'Needs a signing key', 'videoteca-for-mux' ) }
 				</span>
 			</span>
 		);

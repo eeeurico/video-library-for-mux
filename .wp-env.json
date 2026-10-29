@@ -2,7 +2,7 @@
 	"core": null,
 	"phpVersion": "8.3",
 	"mappings": {
-		"wp-content/plugins/video-library-for-mux": "."
+		"wp-content/plugins/videoteca-for-mux": "."
 	},
 	"config": {
 		"WP_DEBUG": true,

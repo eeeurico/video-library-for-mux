@@ -1,5 +1,5 @@
 {
-	"name": "video-library-for-mux",
+	"name": "videoteca-for-mux",
 	"version": "1.0.0",
 	"description": "Upload, organize, search and embed Mux videos from the WordPress admin.",
 	"author": "Eurico Sá Fernandes",
@@ -10,11 +10,12 @@
 		"includes",
 		"license.txt",
 		"src",
+		"tools",
 		"package.json",
 		"webpack.config.js",
 		"readme.txt",
 		"uninstall.php",
-		"video-library-for-mux.php"
+		"videoteca-for-mux.php"
 	],
 	"scripts": {
 		"build": "wp-scripts build",
@@ -22,7 +23,7 @@
 		"lint:js": "wp-scripts lint-js src",
 		"lint:css": "wp-scripts lint-style \"src/**/*.scss\"",
 		"format": "wp-scripts format src",
-		"plugin-zip": "npm run build && wp-scripts plugin-zip && zip -dq video-library-for-mux.zip video-library-for-mux/readme.md"
+		"plugin-zip": "npm run build && wp-scripts plugin-zip && zip -dq videoteca-for-mux.zip videoteca-for-mux/readme.md"
 	},
 	"dependencies": {
 		"@mux/mux-player": "^3.14.1",

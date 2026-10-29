@@ -34,22 +34,22 @@ export default function LibraryModal( {
 	const tabs = [
 		{
 			name: 'library',
-			title: __( 'Video library', 'video-library-for-mux' ),
+			title: __( 'Video library', 'videoteca-for-mux' ),
 		},
 	];
 	if ( canUpload ) {
 		tabs.push(
-			{ name: 'upload', title: __( 'Upload', 'video-library-for-mux' ) },
+			{ name: 'upload', title: __( 'Upload', 'videoteca-for-mux' ) },
 			{
 				name: 'url',
-				title: __( 'Import from URL', 'video-library-for-mux' ),
+				title: __( 'Import from URL', 'videoteca-for-mux' ),
 			}
 		);
 	}
 
 	return (
 		<Modal
-			title={ __( 'Mux Video', 'video-library-for-mux' ) }
+			title={ __( 'Mux Video', 'videoteca-for-mux' ) }
 			onRequestClose={ onClose }
 			className="vlfm-library-modal"
 			size="fill"
@@ -78,7 +78,7 @@ export default function LibraryModal( {
 									onImported={ onSelect }
 									submitLabel={ __(
 										'Import and insert',
-										'video-library-for-mux'
+										'videoteca-for-mux'
 									) }
 								/>
 							</div>
@@ -107,7 +107,7 @@ export default function LibraryModal( {
 								>
 									{ __(
 										'Use this video',
-										'video-library-for-mux'
+										'videoteca-for-mux'
 									) }
 								</Button>
 							</div>

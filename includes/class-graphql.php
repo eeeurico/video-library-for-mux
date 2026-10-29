@@ -48,23 +48,23 @@ final class GraphQL {
 		register_graphql_enum_type(
 			'MuxVideoStatusEnum',
 			array(
-				'description' => __( 'Where a video is in Mux.', 'video-library-for-mux' ),
+				'description' => __( 'Where a video is in Mux.', 'videoteca-for-mux' ),
 				'values'      => array(
 					'UPLOADING' => array(
 						'value'       => 'uploading',
-						'description' => __( 'The file is still on its way to Mux.', 'video-library-for-mux' ),
+						'description' => __( 'The file is still on its way to Mux.', 'videoteca-for-mux' ),
 					),
 					'PREPARING' => array(
 						'value'       => 'preparing',
-						'description' => __( 'Mux is processing the video.', 'video-library-for-mux' ),
+						'description' => __( 'Mux is processing the video.', 'videoteca-for-mux' ),
 					),
 					'READY'     => array(
 						'value'       => 'ready',
-						'description' => __( 'The video can play.', 'video-library-for-mux' ),
+						'description' => __( 'The video can play.', 'videoteca-for-mux' ),
 					),
 					'ERRORED'   => array(
 						'value'       => 'errored',
-						'description' => __( 'Mux could not process the video.', 'video-library-for-mux' ),
+						'description' => __( 'Mux could not process the video.', 'videoteca-for-mux' ),
 					),
 				),
 			)
@@ -73,15 +73,15 @@ final class GraphQL {
 		register_graphql_enum_type(
 			'MuxPlaybackPolicyEnum',
 			array(
-				'description' => __( 'Who can play a video.', 'video-library-for-mux' ),
+				'description' => __( 'Who can play a video.', 'videoteca-for-mux' ),
 				'values'      => array(
 					'PUBLIC' => array(
 						'value'       => 'public',
-						'description' => __( 'Anyone with the playback ID.', 'video-library-for-mux' ),
+						'description' => __( 'Anyone with the playback ID.', 'videoteca-for-mux' ),
 					),
 					'SIGNED' => array(
 						'value'       => 'signed',
-						'description' => __( 'Only players with a token signed by this site.', 'video-library-for-mux' ),
+						'description' => __( 'Only players with a token signed by this site.', 'videoteca-for-mux' ),
 					),
 				),
 			)
@@ -90,23 +90,23 @@ final class GraphQL {
 		register_graphql_enum_type(
 			'MuxVideoIdTypeEnum',
 			array(
-				'description' => __( 'What the id argument of muxVideo is.', 'video-library-for-mux' ),
+				'description' => __( 'What the id argument of muxVideo is.', 'videoteca-for-mux' ),
 				'values'      => array(
 					'ID'          => array(
 						'value'       => 'global_id',
-						'description' => __( 'The global ID.', 'video-library-for-mux' ),
+						'description' => __( 'The global ID.', 'videoteca-for-mux' ),
 					),
 					'DATABASE_ID' => array(
 						'value'       => 'database_id',
-						'description' => __( 'The library video ID, as the block and shortcode use.', 'video-library-for-mux' ),
+						'description' => __( 'The library video ID, as the block and shortcode use.', 'videoteca-for-mux' ),
 					),
 					'ASSET_ID'    => array(
 						'value'       => 'asset_id',
-						'description' => __( 'The Mux asset ID.', 'video-library-for-mux' ),
+						'description' => __( 'The Mux asset ID.', 'videoteca-for-mux' ),
 					),
 					'PLAYBACK_ID' => array(
 						'value'       => 'playback_id',
-						'description' => __( 'The Mux playback ID.', 'video-library-for-mux' ),
+						'description' => __( 'The Mux playback ID.', 'videoteca-for-mux' ),
 					),
 				),
 			)
@@ -115,15 +115,15 @@ final class GraphQL {
 		register_graphql_enum_type(
 			'MuxVideoOrderbyEnum',
 			array(
-				'description' => __( 'How to sort library videos.', 'video-library-for-mux' ),
+				'description' => __( 'How to sort library videos.', 'videoteca-for-mux' ),
 				'values'      => array(
 					'DATE'  => array(
 						'value'       => 'date',
-						'description' => __( 'By the date the video was added.', 'video-library-for-mux' ),
+						'description' => __( 'By the date the video was added.', 'videoteca-for-mux' ),
 					),
 					'TITLE' => array(
 						'value'       => 'title',
-						'description' => __( 'By title.', 'video-library-for-mux' ),
+						'description' => __( 'By title.', 'videoteca-for-mux' ),
 					),
 				),
 			)
@@ -132,19 +132,19 @@ final class GraphQL {
 		register_graphql_object_type(
 			'MuxVideoTokens',
 			array(
-				'description' => __( 'Tokens Mux Player needs to play a signed video. They expire after the time set in Mux Videos → Settings.', 'video-library-for-mux' ),
+				'description' => __( 'Tokens Mux Player needs to play a signed video. They expire after the time set in Mux Videos → Settings.', 'videoteca-for-mux' ),
 				'fields'      => array(
 					'playback'   => array(
 						'type'        => 'String',
-						'description' => __( 'For the playback-token attribute, and for stream and download URLs.', 'video-library-for-mux' ),
+						'description' => __( 'For the playback-token attribute, and for stream and download URLs.', 'videoteca-for-mux' ),
 					),
 					'thumbnail'  => array(
 						'type'        => 'String',
-						'description' => __( 'For the thumbnail-token attribute.', 'video-library-for-mux' ),
+						'description' => __( 'For the thumbnail-token attribute.', 'videoteca-for-mux' ),
 					),
 					'storyboard' => array(
 						'type'        => 'String',
-						'description' => __( 'For the storyboard-token attribute.', 'video-library-for-mux' ),
+						'description' => __( 'For the storyboard-token attribute.', 'videoteca-for-mux' ),
 					),
 				),
 			)
@@ -153,23 +153,23 @@ final class GraphQL {
 		register_graphql_object_type(
 			'MuxVideoCaption',
 			array(
-				'description' => __( 'A captions or subtitles track.', 'video-library-for-mux' ),
+				'description' => __( 'A captions or subtitles track.', 'videoteca-for-mux' ),
 				'fields'      => array(
 					'name'      => array(
 						'type'        => 'String',
-						'description' => __( 'The name players show.', 'video-library-for-mux' ),
+						'description' => __( 'The name players show.', 'videoteca-for-mux' ),
 					),
 					'language'  => array(
 						'type'        => 'String',
-						'description' => __( 'Language code.', 'video-library-for-mux' ),
+						'description' => __( 'Language code.', 'videoteca-for-mux' ),
 					),
 					'status'    => array(
 						'type'        => 'String',
-						'description' => __( 'The track status in Mux, such as ready.', 'video-library-for-mux' ),
+						'description' => __( 'The track status in Mux, such as ready.', 'videoteca-for-mux' ),
 					),
 					'generated' => array(
 						'type'        => 'Boolean',
-						'description' => __( 'Whether Mux generated the track from speech.', 'video-library-for-mux' ),
+						'description' => __( 'Whether Mux generated the track from speech.', 'videoteca-for-mux' ),
 					),
 				),
 			)
@@ -178,15 +178,15 @@ final class GraphQL {
 		register_graphql_object_type(
 			'MuxVideoDownload',
 			array(
-				'description' => __( 'A downloadable MP4 or M4A file of a video.', 'video-library-for-mux' ),
+				'description' => __( 'A downloadable MP4 or M4A file of a video.', 'videoteca-for-mux' ),
 				'fields'      => array(
 					'name' => array(
 						'type'        => 'String',
-						'description' => __( 'File name, such as highest.mp4.', 'video-library-for-mux' ),
+						'description' => __( 'File name, such as highest.mp4.', 'videoteca-for-mux' ),
 					),
 					'url'  => array(
 						'type'        => 'String',
-						'description' => __( 'Download URL. Signed for signed videos.', 'video-library-for-mux' ),
+						'description' => __( 'Download URL. Signed for signed videos.', 'videoteca-for-mux' ),
 					),
 				),
 			)
@@ -195,100 +195,100 @@ final class GraphQL {
 		register_graphql_object_type(
 			self::TYPE,
 			array(
-				'description' => __( 'A video in the Mux video library.', 'video-library-for-mux' ),
+				'description' => __( 'A video in the Mux video library.', 'videoteca-for-mux' ),
 				'interfaces'  => array( 'Node', 'DatabaseIdentifier' ),
 				'fields'      => array(
 					'id'                 => array(
 						'type'        => array( 'non_null' => 'ID' ),
-						'description' => __( 'The global ID.', 'video-library-for-mux' ),
+						'description' => __( 'The global ID.', 'videoteca-for-mux' ),
 					),
 					'databaseId'         => array(
 						'type'        => array( 'non_null' => 'Int' ),
-						'description' => __( 'The library video ID, as the block and shortcode use.', 'video-library-for-mux' ),
+						'description' => __( 'The library video ID, as the block and shortcode use.', 'videoteca-for-mux' ),
 					),
 					'title'              => array(
 						'type'        => 'String',
-						'description' => __( 'The title from the video library.', 'video-library-for-mux' ),
+						'description' => __( 'The title from the video library.', 'videoteca-for-mux' ),
 					),
 					'description'        => array(
 						'type'        => 'String',
-						'description' => __( 'The description from the video library.', 'video-library-for-mux' ),
+						'description' => __( 'The description from the video library.', 'videoteca-for-mux' ),
 					),
 					'date'               => array(
 						'type'        => 'String',
-						'description' => __( 'When the video was added, in ISO 8601 format and UTC.', 'video-library-for-mux' ),
+						'description' => __( 'When the video was added, in ISO 8601 format and UTC.', 'videoteca-for-mux' ),
 					),
 					'status'             => array(
 						'type'        => 'MuxVideoStatusEnum',
-						'description' => __( 'Where the video is in Mux.', 'video-library-for-mux' ),
+						'description' => __( 'Where the video is in Mux.', 'videoteca-for-mux' ),
 					),
 					'playable'           => array(
 						'type'        => 'Boolean',
-						'description' => __( 'Whether the video can play: it is ready, and signed videos have tokens.', 'video-library-for-mux' ),
+						'description' => __( 'Whether the video can play: it is ready, and signed videos have tokens.', 'videoteca-for-mux' ),
 					),
 					'playbackId'         => array(
 						'type'        => 'String',
-						'description' => __( 'The Mux playback ID, for the playback-id attribute of Mux Player.', 'video-library-for-mux' ),
+						'description' => __( 'The Mux playback ID, for the playback-id attribute of Mux Player.', 'videoteca-for-mux' ),
 					),
 					'playbackPolicy'     => array(
 						'type'        => 'MuxPlaybackPolicyEnum',
-						'description' => __( 'Whether the playback ID is public or needs signed tokens.', 'video-library-for-mux' ),
+						'description' => __( 'Whether the playback ID is public or needs signed tokens.', 'videoteca-for-mux' ),
 					),
 					'assetId'            => array(
 						'type'        => 'String',
-						'description' => __( 'The Mux asset ID.', 'video-library-for-mux' ),
+						'description' => __( 'The Mux asset ID.', 'videoteca-for-mux' ),
 					),
 					'duration'           => array(
 						'type'        => 'Float',
-						'description' => __( 'Length in seconds.', 'video-library-for-mux' ),
+						'description' => __( 'Length in seconds.', 'videoteca-for-mux' ),
 					),
 					'aspectRatio'        => array(
 						'type'        => 'String',
-						'description' => __( 'Aspect ratio, such as 16:9.', 'video-library-for-mux' ),
+						'description' => __( 'Aspect ratio, such as 16:9.', 'videoteca-for-mux' ),
 					),
 					'resolution'         => array(
 						'type'        => 'String',
-						'description' => __( 'Resolution tier, such as 1080p.', 'video-library-for-mux' ),
+						'description' => __( 'Resolution tier, such as 1080p.', 'videoteca-for-mux' ),
 					),
 					'width'              => array(
 						'type'        => 'Int',
-						'description' => __( 'Width of the largest rendition, in pixels.', 'video-library-for-mux' ),
+						'description' => __( 'Width of the largest rendition, in pixels.', 'videoteca-for-mux' ),
 					),
 					'height'             => array(
 						'type'        => 'Int',
-						'description' => __( 'Height of the largest rendition, in pixels.', 'video-library-for-mux' ),
+						'description' => __( 'Height of the largest rendition, in pixels.', 'videoteca-for-mux' ),
 					),
 					'videoQuality'       => array(
 						'type'        => 'String',
-						'description' => __( 'The Mux video quality level, such as basic or plus.', 'video-library-for-mux' ),
+						'description' => __( 'The Mux video quality level, such as basic or plus.', 'videoteca-for-mux' ),
 					),
 					'thumbnailTime'      => array(
 						'type'        => 'Float',
-						'description' => __( 'The thumbnail frame, in seconds, when one was chosen in the library.', 'video-library-for-mux' ),
+						'description' => __( 'The thumbnail frame, in seconds, when one was chosen in the library.', 'videoteca-for-mux' ),
 					),
 					'thumbnailUrl'       => array(
 						'type'        => 'String',
-						'description' => __( 'A 640 pixel wide WebP thumbnail.', 'video-library-for-mux' ),
+						'description' => __( 'A 640 pixel wide WebP thumbnail.', 'videoteca-for-mux' ),
 					),
 					'animatedPreviewUrl' => array(
 						'type'        => 'String',
-						'description' => __( 'A four-second animated WebP preview, 320 pixels wide.', 'video-library-for-mux' ),
+						'description' => __( 'A four-second animated WebP preview, 320 pixels wide.', 'videoteca-for-mux' ),
 					),
 					'streamUrl'          => array(
 						'type'        => 'String',
-						'description' => __( 'The HLS stream, for players other than Mux Player. Signed for signed videos.', 'video-library-for-mux' ),
+						'description' => __( 'The HLS stream, for players other than Mux Player. Signed for signed videos.', 'videoteca-for-mux' ),
 					),
 					'tokens'             => array(
 						'type'        => 'MuxVideoTokens',
-						'description' => __( 'Tokens for signed videos. Null for public ones.', 'video-library-for-mux' ),
+						'description' => __( 'Tokens for signed videos. Null for public ones.', 'videoteca-for-mux' ),
 					),
 					'captions'           => array(
 						'type'        => array( 'non_null' => array( 'list_of' => array( 'non_null' => 'MuxVideoCaption' ) ) ),
-						'description' => __( 'Captions and subtitles tracks.', 'video-library-for-mux' ),
+						'description' => __( 'Captions and subtitles tracks.', 'videoteca-for-mux' ),
 					),
 					'downloads'          => array(
 						'type'        => array( 'non_null' => array( 'list_of' => array( 'non_null' => 'MuxVideoDownload' ) ) ),
-						'description' => __( 'Downloadable files, when the site creates them.', 'video-library-for-mux' ),
+						'description' => __( 'Downloadable files, when the site creates them.', 'videoteca-for-mux' ),
 					),
 				),
 			)
@@ -299,15 +299,15 @@ final class GraphQL {
 			'muxVideo',
 			array(
 				'type'        => self::TYPE,
-				'description' => __( 'A video from the Mux video library. Only for users who can edit posts; everyone else gets null. Public pages get their videos through ACF fields.', 'video-library-for-mux' ),
+				'description' => __( 'A video from the Mux video library. Only for users who can edit posts; everyone else gets null. Public pages get their videos through ACF fields.', 'videoteca-for-mux' ),
 				'args'        => array(
 					'id'     => array(
 						'type'        => array( 'non_null' => 'ID' ),
-						'description' => __( 'The video to get.', 'video-library-for-mux' ),
+						'description' => __( 'The video to get.', 'videoteca-for-mux' ),
 					),
 					'idType' => array(
 						'type'        => 'MuxVideoIdTypeEnum',
-						'description' => __( 'What the id is. Defaults to the global ID.', 'video-library-for-mux' ),
+						'description' => __( 'What the id is. Defaults to the global ID.', 'videoteca-for-mux' ),
 					),
 				),
 				'resolve'     => static function ( $root, array $args ) {
@@ -321,23 +321,23 @@ final class GraphQL {
 				'fromType'       => 'RootQuery',
 				'toType'         => self::TYPE,
 				'fromFieldName'  => 'muxVideos',
-				'description'    => __( 'Videos in the Mux video library, newest first. Only for users who can edit posts; everyone else gets an empty list. Pages forwards with first and after.', 'video-library-for-mux' ),
+				'description'    => __( 'Videos in the Mux video library, newest first. Only for users who can edit posts; everyone else gets an empty list. Pages forwards with first and after.', 'videoteca-for-mux' ),
 				'connectionArgs' => array(
 					'search'  => array(
 						'type'        => 'String',
-						'description' => __( 'Words to find in the title, description, file name, asset ID or playback ID.', 'video-library-for-mux' ),
+						'description' => __( 'Words to find in the title, description, file name, asset ID or playback ID.', 'videoteca-for-mux' ),
 					),
 					'status'  => array(
 						'type'        => 'MuxVideoStatusEnum',
-						'description' => __( 'Only videos with this status.', 'video-library-for-mux' ),
+						'description' => __( 'Only videos with this status.', 'videoteca-for-mux' ),
 					),
 					'orderby' => array(
 						'type'        => 'MuxVideoOrderbyEnum',
-						'description' => __( 'What to sort by. Defaults to the date.', 'video-library-for-mux' ),
+						'description' => __( 'What to sort by. Defaults to the date.', 'videoteca-for-mux' ),
 					),
 					'order'   => array(
 						'type'        => 'OrderEnum',
-						'description' => __( 'Sort direction. Defaults to descending.', 'video-library-for-mux' ),
+						'description' => __( 'Sort direction. Defaults to descending.', 'videoteca-for-mux' ),
 					),
 				),
 				'resolve'        => static function ( $root, array $args ) {
@@ -451,7 +451,7 @@ final class GraphQL {
 		}
 
 		if ( ! empty( $args['last'] ) || ! empty( $args['before'] ) ) {
-			throw new UserError( esc_html__( 'muxVideos only pages forwards. Use first and after.', 'video-library-for-mux' ) );
+			throw new UserError( esc_html__( 'muxVideos only pages forwards. Use first and after.', 'videoteca-for-mux' ) );
 		}
 
 		$where  = isset( $args['where'] ) ? $args['where'] : array();

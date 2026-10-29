@@ -20,7 +20,7 @@ export default function CopyButton( { text, label } ) {
 
 	return (
 		<Button ref={ ref } variant="secondary" size="small">
-			{ hasCopied ? __( 'Copied', 'video-library-for-mux' ) : label }
+			{ hasCopied ? __( 'Copied', 'videoteca-for-mux' ) : label }
 		</Button>
 	);
 }

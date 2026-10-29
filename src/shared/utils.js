@@ -12,7 +12,7 @@ import { __, sprintf } from '@wordpress/i18n';
  */
 export function titleFromFilename( filename ) {
 	const title = filename.replace( /\.[a-z0-9]{1,5}$/i, '' ).trim();
-	return title || __( 'Untitled video', 'video-library-for-mux' );
+	return title || __( 'Untitled video', 'videoteca-for-mux' );
 }
 
 /**
@@ -94,11 +94,11 @@ export function videoSummary( video ) {
 export function statusText( video ) {
 	switch ( video.status ) {
 		case 'uploading':
-			return __( 'Waiting for the upload', 'video-library-for-mux' );
+			return __( 'Waiting for the upload', 'videoteca-for-mux' );
 		case 'preparing':
-			return __( 'Processing in Mux…', 'video-library-for-mux' );
+			return __( 'Processing in Mux…', 'videoteca-for-mux' );
 		case 'errored':
-			return __( 'Failed', 'video-library-for-mux' );
+			return __( 'Failed', 'videoteca-for-mux' );
 		default:
 			return '';
 	}
@@ -113,18 +113,15 @@ export function statusText( video ) {
 export function uploadStatusText( upload ) {
 	switch ( upload.phase ) {
 		case 'creating':
-			return __( 'Preparing upload…', 'video-library-for-mux' );
+			return __( 'Preparing upload…', 'videoteca-for-mux' );
 		case 'uploading':
 			return sprintf(
 				/* translators: %d: percentage uploaded. */
-				__( 'Uploading… %d%%', 'video-library-for-mux' ),
+				__( 'Uploading… %d%%', 'videoteca-for-mux' ),
 				upload.progress
 			);
 		case 'processing':
-			return __(
-				'Uploaded. Mux is processing it…',
-				'video-library-for-mux'
-			);
+			return __( 'Uploaded. Mux is processing it…', 'videoteca-for-mux' );
 		case 'error':
 			return upload.error;
 		default:

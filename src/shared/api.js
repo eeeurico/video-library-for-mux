@@ -72,6 +72,6 @@ export const syncFromMux = ( next ) =>
 export function errorMessage( error ) {
 	return (
 		error?.message ||
-		__( 'Something went wrong. Try again.', 'video-library-for-mux' )
+		__( 'Something went wrong. Try again.', 'videoteca-for-mux' )
 	);
 }

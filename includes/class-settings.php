@@ -46,7 +46,7 @@ final class Settings {
 			'signing_key_private'      => '',
 			'token_ttl_hours'          => 24,
 			'accent_color'             => '',
-			'analytics'                => true,
+			'analytics'                => false,
 			'analytics_cookies'        => false,
 			'webhook_secret'           => '',
 			'delete_data_on_uninstall' => false,
@@ -107,29 +107,29 @@ final class Settings {
 	 */
 	public static function caption_languages() {
 		return array(
-			'auto' => __( 'Detect automatically', 'video-library-for-mux' ),
-			'en'   => __( 'English', 'video-library-for-mux' ),
-			'es'   => __( 'Spanish', 'video-library-for-mux' ),
-			'pt'   => __( 'Portuguese', 'video-library-for-mux' ),
-			'fr'   => __( 'French', 'video-library-for-mux' ),
-			'de'   => __( 'German', 'video-library-for-mux' ),
-			'it'   => __( 'Italian', 'video-library-for-mux' ),
-			'nl'   => __( 'Dutch (beta)', 'video-library-for-mux' ),
-			'pl'   => __( 'Polish (beta)', 'video-library-for-mux' ),
-			'ru'   => __( 'Russian (beta)', 'video-library-for-mux' ),
-			'uk'   => __( 'Ukrainian (beta)', 'video-library-for-mux' ),
-			'ca'   => __( 'Catalan (beta)', 'video-library-for-mux' ),
-			'tr'   => __( 'Turkish (beta)', 'video-library-for-mux' ),
-			'sv'   => __( 'Swedish (beta)', 'video-library-for-mux' ),
-			'no'   => __( 'Norwegian (beta)', 'video-library-for-mux' ),
-			'da'   => __( 'Danish (beta)', 'video-library-for-mux' ),
-			'fi'   => __( 'Finnish (beta)', 'video-library-for-mux' ),
-			'cs'   => __( 'Czech (beta)', 'video-library-for-mux' ),
-			'sk'   => __( 'Slovak (beta)', 'video-library-for-mux' ),
-			'hr'   => __( 'Croatian (beta)', 'video-library-for-mux' ),
-			'ro'   => __( 'Romanian (beta)', 'video-library-for-mux' ),
-			'bg'   => __( 'Bulgarian (beta)', 'video-library-for-mux' ),
-			'el'   => __( 'Greek (beta)', 'video-library-for-mux' ),
+			'auto' => __( 'Detect automatically', 'videoteca-for-mux' ),
+			'en'   => __( 'English', 'videoteca-for-mux' ),
+			'es'   => __( 'Spanish', 'videoteca-for-mux' ),
+			'pt'   => __( 'Portuguese', 'videoteca-for-mux' ),
+			'fr'   => __( 'French', 'videoteca-for-mux' ),
+			'de'   => __( 'German', 'videoteca-for-mux' ),
+			'it'   => __( 'Italian', 'videoteca-for-mux' ),
+			'nl'   => __( 'Dutch (beta)', 'videoteca-for-mux' ),
+			'pl'   => __( 'Polish (beta)', 'videoteca-for-mux' ),
+			'ru'   => __( 'Russian (beta)', 'videoteca-for-mux' ),
+			'uk'   => __( 'Ukrainian (beta)', 'videoteca-for-mux' ),
+			'ca'   => __( 'Catalan (beta)', 'videoteca-for-mux' ),
+			'tr'   => __( 'Turkish (beta)', 'videoteca-for-mux' ),
+			'sv'   => __( 'Swedish (beta)', 'videoteca-for-mux' ),
+			'no'   => __( 'Norwegian (beta)', 'videoteca-for-mux' ),
+			'da'   => __( 'Danish (beta)', 'videoteca-for-mux' ),
+			'fi'   => __( 'Finnish (beta)', 'videoteca-for-mux' ),
+			'cs'   => __( 'Czech (beta)', 'videoteca-for-mux' ),
+			'sk'   => __( 'Slovak (beta)', 'videoteca-for-mux' ),
+			'hr'   => __( 'Croatian (beta)', 'videoteca-for-mux' ),
+			'ro'   => __( 'Romanian (beta)', 'videoteca-for-mux' ),
+			'bg'   => __( 'Bulgarian (beta)', 'videoteca-for-mux' ),
+			'el'   => __( 'Greek (beta)', 'videoteca-for-mux' ),
 		);
 	}
 
@@ -162,8 +162,8 @@ final class Settings {
 	public static function action_links( $links ) {
 		array_unshift(
 			$links,
-			sprintf( '<a href="%s">%s</a>', esc_url( self::page_url() ), esc_html__( 'Settings', 'video-library-for-mux' ) ),
-			sprintf( '<a href="%s">%s</a>', esc_url( Admin::page_url() ), esc_html__( 'Library', 'video-library-for-mux' ) )
+			sprintf( '<a href="%s">%s</a>', esc_url( self::page_url() ), esc_html__( 'Settings', 'videoteca-for-mux' ) ),
+			sprintf( '<a href="%s">%s</a>', esc_url( Admin::page_url() ), esc_html__( 'Library', 'videoteca-for-mux' ) )
 		);
 		return $links;
 	}
@@ -174,8 +174,8 @@ final class Settings {
 	public static function add_page() {
 		$hook = add_submenu_page(
 			Admin::PAGE,
-			__( 'Mux Video settings', 'video-library-for-mux' ),
-			__( 'Settings', 'video-library-for-mux' ),
+			__( 'Mux Video settings', 'videoteca-for-mux' ),
+			__( 'Settings', 'videoteca-for-mux' ),
 			'manage_options',
 			self::PAGE,
 			array( __CLASS__, 'render_page' )
@@ -215,36 +215,36 @@ final class Settings {
 
 		add_settings_section(
 			'vlfm_connection',
-			__( 'Mux connection', 'video-library-for-mux' ),
+			__( 'Mux connection', 'videoteca-for-mux' ),
 			array( __CLASS__, 'render_connection_section' ),
 			self::PAGE
 		);
-		self::add_field( 'token_id', __( 'Access token ID', 'video-library-for-mux' ), 'vlfm_connection', array( 'type' => 'text' ) );
-		self::add_field( 'token_secret', __( 'Secret key', 'video-library-for-mux' ), 'vlfm_connection', array( 'type' => 'secret' ) );
+		self::add_field( 'token_id', __( 'Access token ID', 'videoteca-for-mux' ), 'vlfm_connection', array( 'type' => 'text' ) );
+		self::add_field( 'token_secret', __( 'Secret key', 'videoteca-for-mux' ), 'vlfm_connection', array( 'type' => 'secret' ) );
 
 		add_settings_section(
 			'vlfm_uploads',
-			__( 'New uploads', 'video-library-for-mux' ),
+			__( 'New uploads', 'videoteca-for-mux' ),
 			array( __CLASS__, 'render_uploads_section' ),
 			self::PAGE
 		);
 		self::add_field(
 			'video_quality',
-			__( 'Video quality', 'video-library-for-mux' ),
+			__( 'Video quality', 'videoteca-for-mux' ),
 			'vlfm_uploads',
 			array(
 				'type'        => 'select',
 				'options'     => array(
-					'basic'   => __( 'Basic', 'video-library-for-mux' ),
-					'plus'    => __( 'Plus', 'video-library-for-mux' ),
-					'premium' => __( 'Premium', 'video-library-for-mux' ),
+					'basic'   => __( 'Basic', 'videoteca-for-mux' ),
+					'plus'    => __( 'Plus', 'videoteca-for-mux' ),
+					'premium' => __( 'Premium', 'videoteca-for-mux' ),
 				),
-				'description' => __( 'Mux charges differently for each quality level. Plus suits most sites.', 'video-library-for-mux' ),
+				'description' => __( 'Mux charges differently for each quality level. Plus suits most sites.', 'videoteca-for-mux' ),
 			)
 		);
 		self::add_field(
 			'max_resolution_tier',
-			__( 'Maximum resolution', 'video-library-for-mux' ),
+			__( 'Maximum resolution', 'videoteca-for-mux' ),
 			'vlfm_uploads',
 			array(
 				'type'    => 'select',
@@ -257,118 +257,119 @@ final class Settings {
 		);
 		self::add_field(
 			'captions_language',
-			__( 'Auto-generated captions', 'video-library-for-mux' ),
+			__( 'Auto-generated captions', 'videoteca-for-mux' ),
 			'vlfm_uploads',
 			array(
 				'type'        => 'select',
-				'options'     => array( '' => __( 'Off', 'video-library-for-mux' ) ) + self::caption_languages(),
-				'description' => __( 'Mux transcribes the spoken language and adds a captions track to each new video.', 'video-library-for-mux' ),
+				'options'     => array( '' => __( 'Off', 'videoteca-for-mux' ) ) + self::caption_languages(),
+				'description' => __( 'Mux transcribes the spoken language and adds a captions track to each new video.', 'videoteca-for-mux' ),
 			)
 		);
 		self::add_field(
 			'static_renditions',
-			__( 'Downloadable file', 'video-library-for-mux' ),
+			__( 'Downloadable file', 'videoteca-for-mux' ),
 			'vlfm_uploads',
 			array(
 				'type'        => 'select',
 				'options'     => array(
-					''           => __( 'None', 'video-library-for-mux' ),
-					'highest'    => __( 'MP4 at the highest resolution', 'video-library-for-mux' ),
-					'audio-only' => __( 'Audio only (M4A)', 'video-library-for-mux' ),
+					''           => __( 'None', 'videoteca-for-mux' ),
+					'highest'    => __( 'MP4 at the highest resolution', 'videoteca-for-mux' ),
+					'audio-only' => __( 'Audio only (M4A)', 'videoteca-for-mux' ),
 				),
-				'description' => __( 'Creates a static file next to the stream, for downloads or places that cannot play streams.', 'video-library-for-mux' ),
+				'description' => __( 'Creates a static file next to the stream, for downloads or places that cannot play streams.', 'videoteca-for-mux' ),
 			)
 		);
 
 		add_settings_section(
 			'vlfm_playback',
-			__( 'Playback', 'video-library-for-mux' ),
+			__( 'Playback', 'videoteca-for-mux' ),
 			'__return_false',
 			self::PAGE
 		);
 		self::add_field(
 			'playback_policy',
-			__( 'Playback access', 'video-library-for-mux' ),
+			__( 'Playback access', 'videoteca-for-mux' ),
 			'vlfm_playback',
 			array(
 				'type'    => 'radio',
 				'options' => array(
-					'public' => __( 'Public: anyone with the playback ID can watch.', 'video-library-for-mux' ),
-					'signed' => __( 'Signed: the site issues short-lived tokens, so videos only play where you embed them.', 'video-library-for-mux' ),
+					'public' => __( 'Public: anyone with the playback ID can watch.', 'videoteca-for-mux' ),
+					'signed' => __( 'Signed: the site issues short-lived tokens, so videos only play where you embed them.', 'videoteca-for-mux' ),
 				),
 			)
 		);
-		self::add_field( 'signing_key_id', __( 'Signing key ID', 'video-library-for-mux' ), 'vlfm_playback', array( 'type' => 'signing_key' ) );
+		self::add_field( 'signing_key_id', __( 'Signing key ID', 'videoteca-for-mux' ), 'vlfm_playback', array( 'type' => 'signing_key' ) );
 		self::add_field(
 			'signing_key_private',
-			__( 'Signing private key', 'video-library-for-mux' ),
+			__( 'Signing private key', 'videoteca-for-mux' ),
 			'vlfm_playback',
 			array(
 				'type'        => 'secret',
-				'description' => __( 'The base64-encoded private key Mux shows once, when the key is created.', 'video-library-for-mux' ),
+				'description' => __( 'The base64-encoded private key Mux shows once, when the key is created.', 'videoteca-for-mux' ),
 			)
 		);
 		self::add_field(
 			'token_ttl_hours',
-			__( 'Token lifetime', 'video-library-for-mux' ),
+			__( 'Token lifetime', 'videoteca-for-mux' ),
 			'vlfm_playback',
 			array(
 				'type'        => 'number',
 				'min'         => 1,
 				'max'         => 720,
-				'suffix'      => __( 'hours', 'video-library-for-mux' ),
-				'description' => __( 'How long a signed page stays playable. Keep it longer than your page cache lifetime.', 'video-library-for-mux' ),
+				'suffix'      => __( 'hours', 'videoteca-for-mux' ),
+				'description' => __( 'How long a signed page stays playable. Keep it longer than your page cache lifetime.', 'videoteca-for-mux' ),
 			)
 		);
 		self::add_field(
 			'accent_color',
-			__( 'Player accent color', 'video-library-for-mux' ),
+			__( 'Player accent color', 'videoteca-for-mux' ),
 			'vlfm_playback',
 			array( 'type' => 'color' )
 		);
 		self::add_field(
 			'analytics',
-			__( 'Viewer analytics', 'video-library-for-mux' ),
+			__( 'Viewer analytics', 'videoteca-for-mux' ),
 			'vlfm_playback',
 			array(
-				'type'  => 'checkbox',
-				'label' => __( 'Send playback quality data to Mux Data', 'video-library-for-mux' ),
+				'type'        => 'checkbox',
+				'label'       => __( 'Send playback quality data to Mux Data', 'videoteca-for-mux' ),
+				'description' => __( 'Off by default. When on, Mux Player reports start-up time, buffering and errors, with the viewer\'s browser, device and approximate location. Turn it on only if your privacy policy covers it.', 'videoteca-for-mux' ),
 			)
 		);
 		self::add_field(
 			'analytics_cookies',
-			__( 'Analytics cookies', 'video-library-for-mux' ),
+			__( 'Analytics cookies', 'videoteca-for-mux' ),
 			'vlfm_playback',
 			array(
 				'type'        => 'checkbox',
-				'label'       => __( 'Let Mux Data set a cookie to recognize returning viewers', 'video-library-for-mux' ),
-				'description' => __( 'Leave this off unless your cookie notice covers it.', 'video-library-for-mux' ),
+				'label'       => __( 'Let Mux Data set a cookie to recognize returning viewers', 'videoteca-for-mux' ),
+				'description' => __( 'Leave this off unless your cookie notice covers it.', 'videoteca-for-mux' ),
 			)
 		);
 
 		add_settings_section(
 			'vlfm_webhooks',
-			__( 'Webhooks', 'video-library-for-mux' ),
+			__( 'Webhooks', 'videoteca-for-mux' ),
 			array( __CLASS__, 'render_webhooks_section' ),
 			self::PAGE
 		);
-		self::add_field( 'webhook_url', __( 'Webhook URL', 'video-library-for-mux' ), 'vlfm_webhooks', array( 'type' => 'webhook_url' ) );
-		self::add_field( 'webhook_secret', __( 'Signing secret', 'video-library-for-mux' ), 'vlfm_webhooks', array( 'type' => 'secret' ) );
+		self::add_field( 'webhook_url', __( 'Webhook URL', 'videoteca-for-mux' ), 'vlfm_webhooks', array( 'type' => 'webhook_url' ) );
+		self::add_field( 'webhook_secret', __( 'Signing secret', 'videoteca-for-mux' ), 'vlfm_webhooks', array( 'type' => 'secret' ) );
 
 		add_settings_section(
 			'vlfm_data',
-			__( 'Data', 'video-library-for-mux' ),
+			__( 'Data', 'videoteca-for-mux' ),
 			'__return_false',
 			self::PAGE
 		);
 		self::add_field(
 			'delete_data_on_uninstall',
-			__( 'Uninstall', 'video-library-for-mux' ),
+			__( 'Uninstall', 'videoteca-for-mux' ),
 			'vlfm_data',
 			array(
 				'type'        => 'checkbox',
-				'label'       => __( 'Remove the video library and these settings when the plugin is deleted', 'video-library-for-mux' ),
-				'description' => __( 'Your videos stay in your Mux account either way.', 'video-library-for-mux' ),
+				'label'       => __( 'Remove the video library and these settings when the plugin is deleted', 'videoteca-for-mux' ),
+				'description' => __( 'Your videos stay in your Mux account either way.', 'videoteca-for-mux' ),
 			)
 		);
 	}
@@ -398,7 +399,7 @@ final class Settings {
 		}
 		?>
 		<div class="wrap">
-			<h1><?php esc_html_e( 'Mux Video settings', 'video-library-for-mux' ); ?></h1>
+			<h1><?php esc_html_e( 'Mux Video settings', 'videoteca-for-mux' ); ?></h1>
 			<?php
 			// WordPress only shows these by itself on screens under Settings.
 			settings_errors();
@@ -427,7 +428,7 @@ final class Settings {
 			wp_kses(
 				sprintf(
 					/* translators: %s: URL of the Mux access tokens page. */
-					__( 'Create an access token in your <a href="%s" target="_blank" rel="noopener noreferrer">Mux dashboard</a> with <strong>Mux Video: Read and Write</strong> permission. Add <strong>System: Read and Write</strong> too if you want this page to create signing keys for you.', 'video-library-for-mux' ),
+					__( 'Create an access token in your <a href="%s" target="_blank" rel="noopener noreferrer">Mux dashboard</a> with <strong>Mux Video: Read and Write</strong> permission. Add <strong>System: Read and Write</strong> too if you want this page to create signing keys for you.', 'videoteca-for-mux' ),
 					'https://dashboard.mux.com/settings/access-tokens'
 				),
 				array(
@@ -453,7 +454,7 @@ final class Settings {
 		if ( ! empty( $status['ok'] ) ) {
 			printf(
 				'<p class="vlfm-connection is-connected"><span class="dashicons dashicons-yes-alt" aria-hidden="true"></span> %s</p>',
-				esc_html__( 'Connected to Mux.', 'video-library-for-mux' )
+				esc_html__( 'Connected to Mux.', 'videoteca-for-mux' )
 			);
 		} else {
 			printf(
@@ -469,7 +470,7 @@ final class Settings {
 	public static function render_uploads_section() {
 		printf(
 			'<p>%s</p>',
-			esc_html__( 'These apply to videos uploaded or imported from now on. Existing videos keep the settings they were created with.', 'video-library-for-mux' )
+			esc_html__( 'These apply to videos uploaded or imported from now on. Existing videos keep the settings they were created with.', 'videoteca-for-mux' )
 		);
 	}
 
@@ -482,7 +483,7 @@ final class Settings {
 			wp_kses(
 				sprintf(
 					/* translators: %s: URL of the Mux webhooks settings page. */
-					__( 'Optional. The library checks on new uploads while you have it open. A webhook lets Mux tell the site when a video is ready even after you close the page. Add the URL below in the <a href="%s" target="_blank" rel="noopener noreferrer">Mux webhook settings</a>, then paste the signing secret Mux gives you.', 'video-library-for-mux' ),
+					__( 'Optional. The library checks on new uploads while you have it open. A webhook lets Mux tell the site when a video is ready even after you close the page. Add the URL below in the <a href="%s" target="_blank" rel="noopener noreferrer">Mux webhook settings</a>, then paste the signing secret Mux gives you. The site turns webhooks away until the secret is saved.', 'videoteca-for-mux' ),
 					'https://dashboard.mux.com/settings/webhooks'
 				),
 				array(
@@ -515,7 +516,7 @@ final class Settings {
 					'<input type="password" id="%1$s" name="%2$s" value="" class="regular-text" autocomplete="new-password" spellcheck="false" placeholder="%3$s" />',
 					esc_attr( $id ),
 					esc_attr( $name ),
-					esc_attr( $is_set ? __( 'Saved. Leave blank to keep it.', 'video-library-for-mux' ) : '' )
+					esc_attr( $is_set ? __( 'Saved. Leave blank to keep it.', 'videoteca-for-mux' ) : '' )
 				);
 				break;
 
@@ -581,12 +582,12 @@ final class Settings {
 				if ( self::is_configured() ) {
 					printf(
 						' <button type="submit" form="vlfm-create-key-form" class="button">%s</button>',
-						esc_html__( 'Create a signing key', 'video-library-for-mux' )
+						esc_html__( 'Create a signing key', 'videoteca-for-mux' )
 					);
 				}
 				printf(
 					'<p class="description">%s</p>',
-					esc_html__( 'Needed for signed playback. Creating a key here fills in both fields and saves them.', 'video-library-for-mux' )
+					esc_html__( 'Needed for signed playback. Creating a key here fills in both fields and saves them.', 'videoteca-for-mux' )
 				);
 				break;
 
@@ -594,7 +595,7 @@ final class Settings {
 				printf(
 					'<code>%s</code><p class="description">%s</p>',
 					esc_html( rest_url( Rest_Controller::ROUTE_NAMESPACE . '/webhook' ) ),
-					esc_html__( 'Mux needs to reach this address, so webhooks will not arrive on a local or password-protected site.', 'video-library-for-mux' )
+					esc_html__( 'Mux needs to reach this address, so webhooks will not arrive on a local or password-protected site.', 'videoteca-for-mux' )
 				);
 				break;
 
@@ -655,7 +656,7 @@ final class Settings {
 			add_settings_error(
 				self::OPTION,
 				'vlfm_missing_signing_key',
-				__( 'Signed playback needs a signing key. Until you add one, new uploads get public playback IDs.', 'video-library-for-mux' ),
+				__( 'Signed playback needs a signing key. Until you add one, new uploads get public playback IDs.', 'videoteca-for-mux' ),
 				'warning'
 			);
 		}
@@ -711,7 +712,7 @@ final class Settings {
 				'ok'      => false,
 				'message' => sprintf(
 					/* translators: %s: error message from Mux. */
-					__( 'Mux did not accept these credentials: %s', 'video-library-for-mux' ),
+					__( 'Mux did not accept these credentials: %s', 'videoteca-for-mux' ),
 					$result->get_error_message()
 				),
 			);
@@ -731,12 +732,12 @@ final class Settings {
 	 */
 	public static function handle_create_signing_key() {
 		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_die( esc_html__( 'You are not allowed to change these settings.', 'video-library-for-mux' ), 403 );
+			wp_die( esc_html__( 'You are not allowed to change these settings.', 'videoteca-for-mux' ), 403 );
 		}
 		check_admin_referer( self::CREATE_KEY_ACTION );
 
 		$client = Mux_Client::from_settings();
-		$key    = $client ? $client->create_signing_key() : new \WP_Error( 'vlfm_not_configured', __( 'Save your Mux access token first.', 'video-library-for-mux' ) );
+		$key    = $client ? $client->create_signing_key() : new \WP_Error( 'vlfm_not_configured', __( 'Save your Mux access token first.', 'videoteca-for-mux' ) );
 
 		if ( is_wp_error( $key ) ) {
 			add_settings_error(
@@ -744,13 +745,13 @@ final class Settings {
 				'vlfm_signing_key_failed',
 				sprintf(
 					/* translators: %s: error message from Mux. */
-					__( 'Mux could not create a signing key: %s Check that the access token has System read and write permission.', 'video-library-for-mux' ),
+					__( 'Mux could not create a signing key: %s Check that the access token has System read and write permission.', 'videoteca-for-mux' ),
 					$key->get_error_message()
 				),
 				'error'
 			);
 		} elseif ( empty( $key['id'] ) || empty( $key['private_key'] ) ) {
-			add_settings_error( self::OPTION, 'vlfm_signing_key_failed', __( 'Mux returned an incomplete signing key. Try again.', 'video-library-for-mux' ), 'error' );
+			add_settings_error( self::OPTION, 'vlfm_signing_key_failed', __( 'Mux returned an incomplete signing key. Try again.', 'videoteca-for-mux' ), 'error' );
 		} else {
 			$settings                        = self::all();
 			$settings['signing_key_id']      = sanitize_text_field( $key['id'] );
@@ -760,7 +761,7 @@ final class Settings {
 			remove_filter( 'sanitize_option_' . self::OPTION, array( __CLASS__, 'sanitize' ) );
 			update_option( self::OPTION, $settings );
 
-			add_settings_error( self::OPTION, 'vlfm_signing_key_created', __( 'Signing key created and saved.', 'video-library-for-mux' ), 'success' );
+			add_settings_error( self::OPTION, 'vlfm_signing_key_created', __( 'Signing key created and saved.', 'videoteca-for-mux' ), 'success' );
 		}
 
 		set_transient( 'settings_errors', get_settings_errors(), 30 );

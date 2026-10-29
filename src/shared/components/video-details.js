@@ -60,7 +60,7 @@ function Preview( { video, playerRef, onCheckStatus, isChecking } ) {
 				<p>
 					{ __(
 						'Mux is processing this video. It will play here when it is ready.',
-						'video-library-for-mux'
+						'videoteca-for-mux'
 					) }
 				</p>
 			</>
@@ -71,7 +71,7 @@ function Preview( { video, playerRef, onCheckStatus, isChecking } ) {
 				<p>
 					{ __(
 						'The file has not finished uploading. If the upload was stopped, delete this video and upload it again.',
-						'video-library-for-mux'
+						'videoteca-for-mux'
 					) }
 				</p>
 				<Button
@@ -79,7 +79,7 @@ function Preview( { video, playerRef, onCheckStatus, isChecking } ) {
 					onClick={ onCheckStatus }
 					isBusy={ isChecking }
 				>
-					{ __( 'Check status', 'video-library-for-mux' ) }
+					{ __( 'Check status', 'videoteca-for-mux' ) }
 				</Button>
 			</>
 		);
@@ -90,7 +90,7 @@ function Preview( { video, playerRef, onCheckStatus, isChecking } ) {
 					<strong>
 						{ __(
 							'Mux could not process this video.',
-							'video-library-for-mux'
+							'videoteca-for-mux'
 						) }
 					</strong>
 				</p>
@@ -100,7 +100,7 @@ function Preview( { video, playerRef, onCheckStatus, isChecking } ) {
 					onClick={ onCheckStatus }
 					isBusy={ isChecking }
 				>
-					{ __( 'Check again', 'video-library-for-mux' ) }
+					{ __( 'Check again', 'videoteca-for-mux' ) }
 				</Button>
 			</>
 		);
@@ -109,7 +109,7 @@ function Preview( { video, playerRef, onCheckStatus, isChecking } ) {
 			<p>
 				{ __(
 					'This video uses signed playback. Add a signing key in Mux Videos → Settings to preview it.',
-					'video-library-for-mux'
+					'videoteca-for-mux'
 				) }
 			</p>
 		);
@@ -121,45 +121,44 @@ function Preview( { video, playerRef, onCheckStatus, isChecking } ) {
 function DetailsList( { video } ) {
 	const rows = [
 		[
-			__( 'Added', 'video-library-for-mux' ),
+			__( 'Added', 'videoteca-for-mux' ),
 			video.author
 				? sprintf(
 						/* translators: 1: date, 2: user name. */
-						__( '%1$s by %2$s', 'video-library-for-mux' ),
+						__( '%1$s by %2$s', 'videoteca-for-mux' ),
 						formatDate( video.date ),
 						video.author
 					)
 				: formatDate( video.date ),
 		],
-		[ __( 'File name', 'video-library-for-mux' ), video.filename ],
+		[ __( 'File name', 'videoteca-for-mux' ), video.filename ],
 		[
-			__( 'Duration', 'video-library-for-mux' ),
+			__( 'Duration', 'videoteca-for-mux' ),
 			formatDuration( video.duration ),
 		],
 		[
-			__( 'Resolution', 'video-library-for-mux' ),
+			__( 'Resolution', 'videoteca-for-mux' ),
 			video.width && video.height
 				? `${ video.width } × ${ video.height }`
 				: video.resolution,
 		],
-		[ __( 'Aspect ratio', 'video-library-for-mux' ), video.aspect_ratio ],
-		[ __( 'Quality', 'video-library-for-mux' ), video.video_quality ],
+		[ __( 'Aspect ratio', 'videoteca-for-mux' ), video.aspect_ratio ],
+		[ __( 'Quality', 'videoteca-for-mux' ), video.video_quality ],
 		[
-			__( 'Playback', 'video-library-for-mux' ),
+			__( 'Playback', 'videoteca-for-mux' ),
 			video.playback_policy === 'signed'
-				? __( 'Signed', 'video-library-for-mux' )
-				: video.playback_policy &&
-					__( 'Public', 'video-library-for-mux' ),
+				? __( 'Signed', 'videoteca-for-mux' )
+				: video.playback_policy && __( 'Public', 'videoteca-for-mux' ),
 		],
 		[
-			__( 'Captions', 'video-library-for-mux' ),
+			__( 'Captions', 'videoteca-for-mux' ),
 			video.captions
 				.map( ( track ) =>
 					track.status === 'ready'
 						? track.name || track.language
 						: sprintf(
 								/* translators: %s: captions track name. */
-								__( '%s (preparing)', 'video-library-for-mux' ),
+								__( '%s (preparing)', 'videoteca-for-mux' ),
 								track.name || track.language
 							)
 				)
@@ -177,7 +176,7 @@ function DetailsList( { video } ) {
 			) ) }
 			{ video.downloads.length > 0 && (
 				<div className="vlfm-meta__row">
-					<dt>{ __( 'Download', 'video-library-for-mux' ) }</dt>
+					<dt>{ __( 'Download', 'videoteca-for-mux' ) }</dt>
 					<dd>
 						{ video.downloads.map( ( file ) => (
 							<a
@@ -193,11 +192,8 @@ function DetailsList( { video } ) {
 				</div>
 			) }
 			{ [
-				[ __( 'Asset ID', 'video-library-for-mux' ), video.asset_id ],
-				[
-					__( 'Playback ID', 'video-library-for-mux' ),
-					video.playback_id,
-				],
+				[ __( 'Asset ID', 'videoteca-for-mux' ), video.asset_id ],
+				[ __( 'Playback ID', 'videoteca-for-mux' ), video.playback_id ],
 			]
 				.filter( ( [ , value ] ) => value )
 				.map( ( [ label, value ] ) => (
@@ -207,7 +203,7 @@ function DetailsList( { video } ) {
 							<code>{ value }</code>
 							<CopyButton
 								text={ value }
-								label={ __( 'Copy', 'video-library-for-mux' ) }
+								label={ __( 'Copy', 'videoteca-for-mux' ) }
 							/>
 						</dd>
 					</div>
@@ -231,7 +227,7 @@ function ThumbnailControl( { video, value, onChange, playerRef } ) {
 	return (
 		<div className="vlfm-thumbnail">
 			<p className="vlfm-field-label">
-				{ __( 'Thumbnail', 'video-library-for-mux' ) }
+				{ __( 'Thumbnail', 'videoteca-for-mux' ) }
 			</p>
 			<div className="vlfm-thumbnail__body">
 				{ image ? (
@@ -242,13 +238,10 @@ function ThumbnailControl( { video, value, onChange, playerRef } ) {
 				<div>
 					<p className="vlfm-thumbnail__time">
 						{ value === null
-							? __( 'Chosen by Mux', 'video-library-for-mux' )
+							? __( 'Chosen by Mux', 'videoteca-for-mux' )
 							: sprintf(
 									/* translators: %s: time in the video, such as 0:12.4. */
-									__(
-										'Frame at %s',
-										'video-library-for-mux'
-									),
+									__( 'Frame at %s', 'videoteca-for-mux' ),
 									formatTimestamp( value )
 								) }
 					</p>
@@ -263,10 +256,7 @@ function ThumbnailControl( { video, value, onChange, playerRef } ) {
 								onChange( Math.round( time * 10 ) / 10 );
 							} }
 						>
-							{ __(
-								'Use current frame',
-								'video-library-for-mux'
-							) }
+							{ __( 'Use current frame', 'videoteca-for-mux' ) }
 						</Button>
 						{ value !== null && (
 							<Button
@@ -274,7 +264,7 @@ function ThumbnailControl( { video, value, onChange, playerRef } ) {
 								size="small"
 								onClick={ () => onChange( null ) }
 							>
-								{ __( 'Reset', 'video-library-for-mux' ) }
+								{ __( 'Reset', 'videoteca-for-mux' ) }
 							</Button>
 						) }
 					</Flex>
@@ -284,7 +274,7 @@ function ThumbnailControl( { video, value, onChange, playerRef } ) {
 				<p className="description">
 					{ __(
 						'Pause the video on the frame you want, then use it as the thumbnail.',
-						'video-library-for-mux'
+						'videoteca-for-mux'
 					) }
 				</p>
 			) }
@@ -335,7 +325,7 @@ export default function VideoDetails( { id, onClose } ) {
 			! window.confirm(
 				__(
 					'You have unsaved changes. Close without saving?',
-					'video-library-for-mux'
+					'videoteca-for-mux'
 				)
 			)
 		) {
@@ -347,7 +337,7 @@ export default function VideoDetails( { id, onClose } ) {
 	const save = async () => {
 		if ( ! title.trim() ) {
 			createErrorNotice(
-				__( 'Give the video a title.', 'video-library-for-mux' ),
+				__( 'Give the video a title.', 'videoteca-for-mux' ),
 				{
 					type: 'snackbar',
 				}
@@ -362,12 +352,9 @@ export default function VideoDetails( { id, onClose } ) {
 				thumbnail_time: thumbnailTime,
 			} );
 			setTitle( saved.title );
-			createSuccessNotice(
-				__( 'Video saved.', 'video-library-for-mux' ),
-				{
-					type: 'snackbar',
-				}
-			);
+			createSuccessNotice( __( 'Video saved.', 'videoteca-for-mux' ), {
+				type: 'snackbar',
+			} );
 		} catch ( saveError ) {
 			createErrorNotice( errorMessage( saveError ), {
 				type: 'snackbar',
@@ -399,11 +386,11 @@ export default function VideoDetails( { id, onClose } ) {
 				deleteFromMux
 					? __(
 							'Video deleted from the library and from Mux.',
-							'video-library-for-mux'
+							'videoteca-for-mux'
 						)
 					: __(
 							'Video removed from the library. It is still in Mux.',
-							'video-library-for-mux'
+							'videoteca-for-mux'
 						),
 				{ type: 'snackbar' }
 			);
@@ -418,7 +405,7 @@ export default function VideoDetails( { id, onClose } ) {
 
 	return (
 		<Modal
-			title={ __( 'Video details', 'video-library-for-mux' ) }
+			title={ __( 'Video details', 'videoteca-for-mux' ) }
 			onRequestClose={ requestClose }
 			className="vlfm-details-modal"
 			size="large"
@@ -442,10 +429,10 @@ export default function VideoDetails( { id, onClose } ) {
 						</div>
 						<div className="vlfm-details__fields">
 							<TextControl
-								label={ __( 'Title', 'video-library-for-mux' ) }
+								label={ __( 'Title', 'videoteca-for-mux' ) }
 								help={ __(
 									'Shown in the library, the player and your Mux dashboard. Search uses it too.',
-									'video-library-for-mux'
+									'videoteca-for-mux'
 								) }
 								value={ title }
 								onChange={ setTitle }
@@ -456,11 +443,11 @@ export default function VideoDetails( { id, onClose } ) {
 							<TextareaControl
 								label={ __(
 									'Description',
-									'video-library-for-mux'
+									'videoteca-for-mux'
 								) }
 								help={ __(
 									'Notes for your team. It is searchable but not shown to visitors.',
-									'video-library-for-mux'
+									'videoteca-for-mux'
 								) }
 								value={ description }
 								onChange={ setDescription }
@@ -479,10 +466,7 @@ export default function VideoDetails( { id, onClose } ) {
 							<DetailsList video={ video } />
 							<div className="vlfm-shortcode">
 								<p className="vlfm-field-label">
-									{ __(
-										'Shortcode',
-										'video-library-for-mux'
-									) }
+									{ __( 'Shortcode', 'videoteca-for-mux' ) }
 								</p>
 								<div className="vlfm-shortcode__row">
 									<code>{ video.shortcode }</code>
@@ -490,7 +474,7 @@ export default function VideoDetails( { id, onClose } ) {
 										text={ video.shortcode }
 										label={ __(
 											'Copy',
-											'video-library-for-mux'
+											'videoteca-for-mux'
 										) }
 									/>
 								</div>
@@ -507,7 +491,7 @@ export default function VideoDetails( { id, onClose } ) {
 											/* translators: %s: video title. */
 											__(
 												'Delete “%s”?',
-												'video-library-for-mux'
+												'videoteca-for-mux'
 											),
 											video.title
 										) }
@@ -516,7 +500,7 @@ export default function VideoDetails( { id, onClose } ) {
 								<CheckboxControl
 									label={ __(
 										'Also delete it from Mux. This cannot be undone, and pages using it will stop playing it.',
-										'video-library-for-mux'
+										'videoteca-for-mux'
 									) }
 									checked={ deleteFromMux }
 									onChange={ setDeleteFromMux }
@@ -530,10 +514,7 @@ export default function VideoDetails( { id, onClose } ) {
 										isBusy={ isDeleting }
 										disabled={ isDeleting }
 									>
-										{ __(
-											'Delete',
-											'video-library-for-mux'
-										) }
+										{ __( 'Delete', 'videoteca-for-mux' ) }
 									</Button>
 									<Button
 										variant="tertiary"
@@ -541,10 +522,7 @@ export default function VideoDetails( { id, onClose } ) {
 											setIsConfirmingDelete( false )
 										}
 									>
-										{ __(
-											'Cancel',
-											'video-library-for-mux'
-										) }
+										{ __( 'Cancel', 'videoteca-for-mux' ) }
 									</Button>
 								</Flex>
 							</div>
@@ -558,10 +536,7 @@ export default function VideoDetails( { id, onClose } ) {
 											setIsConfirmingDelete( true )
 										}
 									>
-										{ __(
-											'Delete…',
-											'video-library-for-mux'
-										) }
+										{ __( 'Delete…', 'videoteca-for-mux' ) }
 									</Button>
 								) : (
 									<span />
@@ -574,10 +549,7 @@ export default function VideoDetails( { id, onClose } ) {
 										disabled={ ! isDirty || isSaving }
 										__next40pxDefaultSize
 									>
-										{ __(
-											'Save',
-											'video-library-for-mux'
-										) }
+										{ __( 'Save', 'videoteca-for-mux' ) }
 									</Button>
 								) }
 							</>

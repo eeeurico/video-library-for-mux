@@ -33,24 +33,23 @@ final class Admin {
 	}
 
 	/**
-	 * Adds the Mux Videos menu, just below Media, with the library as its first screen.
+	 * Adds the Mux Videos menu, with the library as its first screen.
 	 */
 	public static function add_page() {
 		$hook = add_menu_page(
-			__( 'Mux Videos', 'video-library-for-mux' ),
-			__( 'Mux Videos', 'video-library-for-mux' ),
+			__( 'Mux Videos', 'videoteca-for-mux' ),
+			__( 'Mux Videos', 'videoteca-for-mux' ),
 			'upload_files',
 			self::PAGE,
 			array( __CLASS__, 'render_page' ),
-			'dashicons-video-alt3',
-			11
+			'dashicons-video-alt3'
 		);
 
 		// Names the first item "Library", as WordPress does under Media.
 		add_submenu_page(
 			self::PAGE,
-			__( 'Mux Videos', 'video-library-for-mux' ),
-			__( 'Library', 'video-library-for-mux' ),
+			__( 'Mux Videos', 'videoteca-for-mux' ),
+			__( 'Library', 'videoteca-for-mux' ),
 			'upload_files',
 			self::PAGE
 		);
@@ -80,7 +79,7 @@ final class Admin {
 			$asset['version'],
 			true
 		);
-		wp_set_script_translations( 'vlfm-admin', 'video-library-for-mux' );
+		wp_set_script_translations( 'vlfm-admin', 'videoteca-for-mux' );
 		wp_add_inline_script(
 			'vlfm-admin',
 			'window.vlfmLibrary = ' . wp_json_encode(
@@ -117,7 +116,7 @@ final class Admin {
 	public static function render_page() {
 		?>
 		<div class="wrap">
-			<h1 class="wp-heading-inline"><?php esc_html_e( 'Mux Videos', 'video-library-for-mux' ); ?></h1>
+			<h1 class="wp-heading-inline"><?php esc_html_e( 'Mux Videos', 'videoteca-for-mux' ); ?></h1>
 			<span id="vlfm-library-actions"></span>
 			<hr class="wp-header-end" />
 
@@ -128,11 +127,11 @@ final class Admin {
 						if ( current_user_can( 'manage_options' ) ) {
 							printf(
 								/* translators: %s: URL of the settings screen. */
-								wp_kses( __( 'Connect your Mux account in <a href="%s">Mux Videos → Settings</a> to upload videos.', 'video-library-for-mux' ), array( 'a' => array( 'href' => array() ) ) ),
+								wp_kses( __( 'Connect your Mux account in <a href="%s">Mux Videos → Settings</a> to upload videos.', 'videoteca-for-mux' ), array( 'a' => array( 'href' => array() ) ) ),
 								esc_url( Settings::page_url() )
 							);
 						} else {
-							esc_html_e( 'An administrator needs to connect a Mux account before videos can be uploaded.', 'video-library-for-mux' );
+							esc_html_e( 'An administrator needs to connect a Mux account before videos can be uploaded.', 'videoteca-for-mux' );
 						}
 						?>
 					</p>
@@ -141,13 +140,13 @@ final class Admin {
 
 			<?php if ( Settings::uses_signed_playback() && ! Playback::can_sign() ) : ?>
 				<div class="notice notice-warning inline">
-					<p><?php esc_html_e( 'Signed playback is on, but there is no signing key, so new videos get public playback IDs and signed videos cannot play. Add a signing key in Mux Videos → Settings.', 'video-library-for-mux' ); ?></p>
+					<p><?php esc_html_e( 'Signed playback is on, but there is no signing key, so new videos get public playback IDs and signed videos cannot play. Add a signing key in Mux Videos → Settings.', 'videoteca-for-mux' ); ?></p>
 				</div>
 			<?php endif; ?>
 
 			<div id="vlfm-library">
 				<noscript>
-					<div class="notice notice-error inline"><p><?php esc_html_e( 'The video library needs JavaScript.', 'video-library-for-mux' ); ?></p></div>
+					<div class="notice notice-error inline"><p><?php esc_html_e( 'The video library needs JavaScript.', 'videoteca-for-mux' ); ?></p></div>
 				</noscript>
 			</div>
 		</div>

@@ -51,13 +51,13 @@ function useSync( onDone ) {
 								'Sync finished. %d video was added to the library.',
 								'Sync finished. %d videos were added to the library.',
 								created,
-								'video-library-for-mux'
+								'videoteca-for-mux'
 							),
 							created
 						)
 					: __(
 							'Sync finished. The library already had every video in your Mux account.',
-							'video-library-for-mux'
+							'videoteca-for-mux'
 						),
 				{ type: 'snackbar' }
 			);
@@ -95,7 +95,7 @@ function LibraryApp() {
 					aria-expanded={ isUploaderOpen }
 					onClick={ () => setIsUploaderOpen( ! isUploaderOpen ) }
 				>
-					{ __( 'Upload video', 'video-library-for-mux' ) }
+					{ __( 'Upload video', 'videoteca-for-mux' ) }
 				</button>
 			) }
 			{ canUpload && (
@@ -104,7 +104,7 @@ function LibraryApp() {
 					className="page-title-action"
 					onClick={ () => setIsImportOpen( true ) }
 				>
-					{ __( 'Import from URL', 'video-library-for-mux' ) }
+					{ __( 'Import from URL', 'videoteca-for-mux' ) }
 				</button>
 			) }
 			{ canSync && (
@@ -114,7 +114,7 @@ function LibraryApp() {
 					onClick={ runSync }
 					disabled={ !! syncProgress }
 				>
-					{ __( 'Sync from Mux', 'video-library-for-mux' ) }
+					{ __( 'Sync from Mux', 'videoteca-for-mux' ) }
 				</button>
 			) }
 		</>
@@ -127,7 +127,7 @@ function LibraryApp() {
 				onClick={ () => setIsUploaderOpen( true ) }
 				__next40pxDefaultSize
 			>
-				{ __( 'Upload a video', 'video-library-for-mux' ) }
+				{ __( 'Upload a video', 'videoteca-for-mux' ) }
 			</Button>
 			{ canSync && (
 				<Button
@@ -137,7 +137,7 @@ function LibraryApp() {
 				>
 					{ __(
 						'Add the videos already in your Mux account',
-						'video-library-for-mux'
+						'videoteca-for-mux'
 					) }
 				</Button>
 			) }
@@ -158,7 +158,7 @@ function LibraryApp() {
 						/* translators: 1: videos checked so far, 2: videos added so far. */
 						__(
 							'Checking your Mux account… %1$d checked, %2$d added.',
-							'video-library-for-mux'
+							'videoteca-for-mux'
 						),
 						syncProgress.checked,
 						syncProgress.created
@@ -192,7 +192,7 @@ function LibraryApp() {
 
 			{ isImportOpen && (
 				<Modal
-					title={ __( 'Import from URL', 'video-library-for-mux' ) }
+					title={ __( 'Import from URL', 'videoteca-for-mux' ) }
 					onRequestClose={ () => setIsImportOpen( false ) }
 					className="vlfm-import-modal"
 				>
@@ -205,7 +205,7 @@ function LibraryApp() {
 									/* translators: %s: video title. */
 									__(
 										'Mux is fetching “%s”. It appears in the library while it processes.',
-										'video-library-for-mux'
+										'videoteca-for-mux'
 									),
 									video.title
 								),

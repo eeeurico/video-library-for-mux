@@ -49,8 +49,8 @@ final class Videos {
 			self::POST_TYPE,
 			array(
 				'labels'              => array(
-					'name'          => __( 'Mux videos', 'video-library-for-mux' ),
-					'singular_name' => __( 'Mux video', 'video-library-for-mux' ),
+					'name'          => __( 'Mux videos', 'videoteca-for-mux' ),
+					'singular_name' => __( 'Mux video', 'videoteca-for-mux' ),
 				),
 				'public'              => false,
 				'show_ui'             => false,
@@ -77,7 +77,7 @@ final class Videos {
 	public static function title_from_filename( $filename ) {
 		$title = preg_replace( '/\.[a-z0-9]{1,5}$/i', '', wp_basename( (string) $filename ) );
 		$title = sanitize_text_field( $title );
-		return '' !== $title ? $title : __( 'Untitled video', 'video-library-for-mux' );
+		return '' !== $title ? $title : __( 'Untitled video', 'videoteca-for-mux' );
 	}
 
 	/**
@@ -164,12 +164,12 @@ final class Videos {
 	 */
 	private static function caption_track_name( $language ) {
 		if ( 'auto' === $language ) {
-			return __( 'Captions (auto-generated)', 'video-library-for-mux' );
+			return __( 'Captions (auto-generated)', 'videoteca-for-mux' );
 		}
 		$languages = Settings::caption_languages();
-		$label     = isset( $languages[ $language ] ) ? trim( str_replace( __( '(beta)', 'video-library-for-mux' ), '', $languages[ $language ] ) ) : $language;
+		$label     = isset( $languages[ $language ] ) ? trim( str_replace( __( '(beta)', 'videoteca-for-mux' ), '', $languages[ $language ] ) ) : $language;
 		/* translators: %s: language name. */
-		return sprintf( __( '%s (auto-generated)', 'video-library-for-mux' ), $label );
+		return sprintf( __( '%s (auto-generated)', 'videoteca-for-mux' ), $label );
 	}
 
 	/**
@@ -276,14 +276,14 @@ final class Videos {
 		$status = isset( $upload['status'] ) ? $upload['status'] : '';
 		switch ( $status ) {
 			case 'errored':
-				$message = ! empty( $upload['error']['message'] ) ? (string) $upload['error']['message'] : __( 'Mux could not process the uploaded file.', 'video-library-for-mux' );
+				$message = ! empty( $upload['error']['message'] ) ? (string) $upload['error']['message'] : __( 'Mux could not process the uploaded file.', 'videoteca-for-mux' );
 				self::mark_errored( $post_id, $message );
 				break;
 			case 'cancelled':
-				self::mark_errored( $post_id, __( 'The upload was cancelled before it finished.', 'video-library-for-mux' ) );
+				self::mark_errored( $post_id, __( 'The upload was cancelled before it finished.', 'videoteca-for-mux' ) );
 				break;
 			case 'timed_out':
-				self::mark_errored( $post_id, __( 'The upload link expired before the file finished uploading.', 'video-library-for-mux' ) );
+				self::mark_errored( $post_id, __( 'The upload link expired before the file finished uploading.', 'videoteca-for-mux' ) );
 				break;
 			default:
 				self::set_meta( $post_id, self::META_STATUS, 'uploading' );
@@ -322,7 +322,7 @@ final class Videos {
 
 		if ( 'errored' === $status ) {
 			$messages = isset( $asset['errors']['messages'] ) ? (array) $asset['errors']['messages'] : array();
-			self::set_meta( $post_id, self::META_ERROR, sanitize_text_field( $messages ? implode( ' ', $messages ) : __( 'Mux could not process this video.', 'video-library-for-mux' ) ) );
+			self::set_meta( $post_id, self::META_ERROR, sanitize_text_field( $messages ? implode( ' ', $messages ) : __( 'Mux could not process this video.', 'videoteca-for-mux' ) ) );
 		} else {
 			delete_post_meta( $post_id, self::META_ERROR );
 		}
@@ -392,13 +392,13 @@ final class Videos {
 		if ( '' === $asset_id ) {
 			$upload_id = (string) get_post_meta( $post_id, self::META_UPLOAD_ID, true );
 			if ( '' === $upload_id ) {
-				return new WP_Error( 'vlfm_no_source', __( 'This video is not linked to anything in Mux.', 'video-library-for-mux' ), array( 'status' => 409 ) );
+				return new WP_Error( 'vlfm_no_source', __( 'This video is not linked to anything in Mux.', 'videoteca-for-mux' ), array( 'status' => 409 ) );
 			}
 
 			$upload = $client->get_upload( $upload_id );
 			if ( is_wp_error( $upload ) ) {
 				if ( self::is_not_found( $upload ) ) {
-					self::mark_errored( $post_id, __( 'Mux no longer has this upload.', 'video-library-for-mux' ) );
+					self::mark_errored( $post_id, __( 'Mux no longer has this upload.', 'videoteca-for-mux' ) );
 				}
 				return $upload;
 			}
@@ -413,7 +413,7 @@ final class Videos {
 		$asset = $client->get_asset( $asset_id );
 		if ( is_wp_error( $asset ) ) {
 			if ( self::is_not_found( $asset ) ) {
-				self::mark_errored( $post_id, __( 'This video no longer exists in Mux.', 'video-library-for-mux' ) );
+				self::mark_errored( $post_id, __( 'This video no longer exists in Mux.', 'videoteca-for-mux' ) );
 			}
 			return $asset;
 		}
@@ -595,7 +595,7 @@ final class Videos {
 			if ( '' === $title ) {
 				$title = sprintf(
 					/* translators: %s: date the video was created in Mux. */
-					__( 'Untitled video, %s', 'video-library-for-mux' ),
+					__( 'Untitled video, %s', 'videoteca-for-mux' ),
 					wp_date( get_option( 'date_format' ) . ' ' . get_option( 'time_format' ), $created_at )
 				);
 			}

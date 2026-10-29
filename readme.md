@@ -1,8 +1,8 @@
-# Video Library for Mux
+# Videoteca – Video Library for Mux
 
 WordPress plugin to upload videos to [Mux](https://www.mux.com/) from the admin, keep the titles you give them, search the library, and embed videos with a block, a shortcode or an ACF field. Works with WPGraphQL for headless front ends.
 
-Not on WordPress.org yet; it will be [`video-library-for-mux`](https://wordpress.org/plugins/video-library-for-mux/). See [readme.txt](readme.txt) for the full documentation, the shortcode options, ACF and GraphQL examples, and the FAQ.
+Not on WordPress.org yet; it will be [`videoteca-for-mux`](https://wordpress.org/plugins/videoteca-for-mux/). See [readme.txt](readme.txt) for the full documentation, the shortcode options, ACF and GraphQL examples, and the FAQ.
 
 ## Setup
 
@@ -24,7 +24,7 @@ npm run plugin-zip   # the zip for WordPress.org
 ```
 
 ```
-video-library-for-mux.php           bootstrap and constants
+videoteca-for-mux.php               bootstrap and constants
 includes/class-plugin.php           hooks everything up
 includes/class-videos.php           library post type, search, sync from Mux
 includes/class-mux-client.php       Mux API requests

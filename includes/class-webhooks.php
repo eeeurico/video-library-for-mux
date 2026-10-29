@@ -33,13 +33,17 @@ final class Webhooks {
 	 */
 	public static function handle( WP_REST_Request $request ) {
 		$secret = (string) Settings::get( 'webhook_secret' );
-		if ( '' !== $secret && ! self::verify( (string) $request->get_header( 'mux_signature' ), $request->get_body(), $secret ) ) {
-			return new WP_Error( 'vlfm_invalid_signature', __( 'The webhook signature is not valid.', 'video-library-for-mux' ), array( 'status' => 401 ) );
+		if ( '' === $secret ) {
+			// Without a secret there is no way to tell Mux from anyone else.
+			return new WP_Error( 'vlfm_webhooks_off', __( 'Webhooks are off until a signing secret is saved in the settings.', 'videoteca-for-mux' ), array( 'status' => 403 ) );
+		}
+		if ( ! self::verify( (string) $request->get_header( 'mux_signature' ), $request->get_body(), $secret ) ) {
+			return new WP_Error( 'vlfm_invalid_signature', __( 'The webhook signature is not valid.', 'videoteca-for-mux' ), array( 'status' => 401 ) );
 		}
 
 		$event = json_decode( $request->get_body(), true );
 		if ( ! is_array( $event ) || empty( $event['type'] ) ) {
-			return new WP_Error( 'vlfm_invalid_event', __( 'The webhook body is not a Mux event.', 'video-library-for-mux' ), array( 'status' => 400 ) );
+			return new WP_Error( 'vlfm_invalid_event', __( 'The webhook body is not a Mux event.', 'videoteca-for-mux' ), array( 'status' => 400 ) );
 		}
 
 		$type    = (string) $event['type'];

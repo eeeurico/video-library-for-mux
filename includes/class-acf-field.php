@@ -19,9 +19,9 @@ final class ACF_Field extends \acf_field {
 	 */
 	public function initialize() {
 		$this->name        = ACF::FIELD_TYPE;
-		$this->label       = __( 'Mux Video', 'video-library-for-mux' );
+		$this->label       = __( 'Mux Video', 'videoteca-for-mux' );
 		$this->category    = 'content';
-		$this->description = __( 'A video from the Mux video library. Editors choose one, upload a new one or import one from a URL, without leaving the screen.', 'video-library-for-mux' );
+		$this->description = __( 'A video from the Mux video library. Editors choose one, upload a new one or import one from a URL, without leaving the screen.', 'videoteca-for-mux' );
 		$this->defaults    = array( 'return_format' => 'array' );
 
 		// The player format returns markup that is escaped as it is built, and
@@ -38,15 +38,15 @@ final class ACF_Field extends \acf_field {
 		acf_render_field_setting(
 			$field,
 			array(
-				'label'        => __( 'Return Format', 'video-library-for-mux' ),
-				'instructions' => __( 'Video Array has the playback ID, thumbnail, captions and the tokens signed videos need. Player HTML is a Mux Player, ready to print.', 'video-library-for-mux' ),
+				'label'        => __( 'Return Format', 'videoteca-for-mux' ),
+				'instructions' => __( 'Video Array has the playback ID, thumbnail, captions and the tokens signed videos need. Player HTML is a Mux Player, ready to print.', 'videoteca-for-mux' ),
 				'type'         => 'radio',
 				'name'         => 'return_format',
 				'layout'       => 'horizontal',
 				'choices'      => array(
-					'array'  => __( 'Video Array', 'video-library-for-mux' ),
-					'id'     => __( 'Video ID', 'video-library-for-mux' ),
-					'player' => __( 'Player HTML', 'video-library-for-mux' ),
+					'array'  => __( 'Video Array', 'videoteca-for-mux' ),
+					'id'     => __( 'Video ID', 'videoteca-for-mux' ),
+					'player' => __( 'Player HTML', 'videoteca-for-mux' ),
 				),
 			)
 		);
@@ -85,7 +85,7 @@ final class ACF_Field extends \acf_field {
 			$asset['version'],
 			true
 		);
-		wp_set_script_translations( 'vlfm-acf', 'video-library-for-mux' );
+		wp_set_script_translations( 'vlfm-acf', 'videoteca-for-mux' );
 		wp_add_inline_script(
 			'vlfm-acf',
 			'window.vlfmAcf = ' . wp_json_encode(
@@ -119,7 +119,7 @@ final class ACF_Field extends \acf_field {
 			return $valid;
 		}
 		if ( ! Videos::is_video( ACF::video_id( $value ) ) ) {
-			return __( 'Choose a video from the video library.', 'video-library-for-mux' );
+			return __( 'Choose a video from the video library.', 'videoteca-for-mux' );
 		}
 		return $valid;
 	}

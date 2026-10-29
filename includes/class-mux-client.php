@@ -194,7 +194,7 @@ final class Mux_Client {
 			return new WP_Error(
 				'vlfm_mux_unreachable',
 				/* translators: %s: error message. */
-				sprintf( __( 'Could not reach Mux: %s', 'video-library-for-mux' ), $response->get_error_message() ),
+				sprintf( __( 'Could not reach Mux: %s', 'videoteca-for-mux' ), $response->get_error_message() ),
 				array( 'status' => 502 )
 			);
 		}
@@ -224,16 +224,16 @@ final class Mux_Client {
 
 		switch ( $code ) {
 			case 401:
-				return __( 'The access token ID or secret key is wrong.', 'video-library-for-mux' );
+				return __( 'The access token ID or secret key is wrong.', 'videoteca-for-mux' );
 			case 403:
-				return __( 'The access token does not have permission for this.', 'video-library-for-mux' );
+				return __( 'The access token does not have permission for this.', 'videoteca-for-mux' );
 			case 404:
-				return __( 'Mux could not find this item. It may have been deleted.', 'video-library-for-mux' );
+				return __( 'Mux could not find this item. It may have been deleted.', 'videoteca-for-mux' );
 			case 429:
-				return __( 'Mux is rate limiting requests. Wait a moment and try again.', 'video-library-for-mux' );
+				return __( 'Mux is rate limiting requests. Wait a moment and try again.', 'videoteca-for-mux' );
 		}
 
 		/* translators: %d: HTTP status code. */
-		return sprintf( __( 'Mux returned an unexpected response (HTTP %d).', 'video-library-for-mux' ), $code );
+		return sprintf( __( 'Mux returned an unexpected response (HTTP %d).', 'videoteca-for-mux' ), $code );
 	}
 }
