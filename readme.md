@@ -44,6 +44,6 @@ uninstall.php                       removes the library and settings, if asked t
 
 Inspired by [Mux Input for Sanity](https://github.com/sanity-io/sanity-plugin-mux-input).
 
-<a href="https://github.com/eeeurico/video-library-for-mux/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=eeeurico/video-library-for-mux" />
+<a href="https://github.com/eeeurico/videoteca-for-mux/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=eeeurico/videoteca-for-mux" />
 </a>
